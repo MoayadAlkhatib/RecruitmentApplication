@@ -1,0 +1,30 @@
+{
+  "name": "recruitmentapplication",
+  "version": "1.0.0",
+  "description": "A recruitment application for an amusement park.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoayadAlkhatib/RecruitmentApplication.git"
+  },
+  "keywords": [
+    "Recruitment",
+    "amusement",
+    "applications",
+    "applicant",
+    "job",
+    "administration"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoayadAlkhatib/RecruitmentApplication/issues"
+  },
+  "homepage": "https://github.com/MoayadAlkhatib/RecruitmentApplication#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
