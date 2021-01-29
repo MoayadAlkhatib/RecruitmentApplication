@@ -6,9 +6,18 @@ const DAO = require('../integration/DAO');
  */
 class Controller{
     /**
-     * init the database
+     * create an instance of controller object.
      */
     constructor(){
         this.DAO = new DAO();
     }
-}
+
+    /**
+     * init the database.
+     */
+    async testConnectivity(){
+    await this.DAO.testConnectivity();
+    }
+
+
+} module.exports = Controller;
