@@ -1,4 +1,5 @@
 const DAO = require('../integration/DAO');
+const Registration = require('../model/Registration');
 /**
  * All classes should call the model or the DAO using this class.
  * @author Moayad Alkhatib
@@ -17,6 +18,15 @@ class Controller{
      */
     async testConnectivity(){
     await this.DAO.testConnectivity();
+    }
+
+    /**
+     * validate the form for registration.
+     * @param { any } firstName the first field to be checked.
+     * @param { any } lastName the second field to be checked. 
+     */
+    validateTheForm(firstName, lastName){
+        Registration.validateForm(firstName, lastName);
     }
 
 
