@@ -1,4 +1,3 @@
-const { json } = require('sequelize');
 const Sequelize  = require('sequelize');
 /**
  * This is the class responsible for connections and calls 
@@ -23,10 +22,6 @@ class DAO{
      */
     async testConnectivity(){
         await this.db.authenticate()
-        .then(()=>{ console.log('Database connected....')
-        }).catch(err => {
-            console.log('error'+err)
-        })
     }
 
 
