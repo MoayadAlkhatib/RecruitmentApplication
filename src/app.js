@@ -3,6 +3,7 @@ const exphbs  = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser')
 require('dotenv').config();
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -21,7 +22,6 @@ app.get('/', (req, res)=>{
 })
 
 app.use(express.static(path.join(__dirname, '../public')));
-
 
 //All routes
 app.use('/Dashboard', require('./routes/Dashboard'));

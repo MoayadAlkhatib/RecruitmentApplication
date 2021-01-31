@@ -25,9 +25,8 @@ class Controller{
      * @param { any } firstName the first field to be checked.
      * @param { any } lastName the second field to be checked. 
      */
-    validateTheForm(firstName, lastName){
-        Registration.validateForm(firstName, lastName);
+    static validateTheForm(firstName, lastName){
+        return Registration.validateForm(firstName, lastName);
     }
-
 
 } module.exports = Controller;

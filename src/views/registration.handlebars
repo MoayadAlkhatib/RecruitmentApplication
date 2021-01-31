@@ -11,14 +11,13 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form>
-
+                    <form action="/Dashboard/registration" method="POST">
                         <label class="sr-only" for="firstName">firstName</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="First name" aria-label="firstName">
+                            <input type="text" class="form-control" placeholder="First name" name="firstName">
                         </div>
 
                         <label class="sr-only" for="lastName">lastName</label>
@@ -26,7 +25,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Last name" aria-label="lastName">
+                            <input type="text" class="form-control" placeholder="Last name" name="lastName">
                         </div>
 
                         <label class="sr-only" for="emailAddress">emailAddress</label>
@@ -34,7 +33,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Email address" aria-label="emailAddress">
+                            <input type="text" class="form-control" placeholder="Email address" name="emailAddress">
                         </div>
 
                         <label class="sr-only" for="dateOfBirth">dateOfBirth</label>
@@ -42,7 +41,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Date of birth yyyymmdd" aria-label="dateOfBirth">
+                            <input type="text" class="form-control" placeholder="Date of birth yyyymmdd" name="dateOfBirth">
                         </div>
                         
                         <label class="sr-only" for="usrname">Username</label>
@@ -50,7 +49,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                            <input type="text" class="form-control" placeholder="Username" name="Username">
                         </div>
 
 
@@ -59,15 +58,15 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-key"></i></span>
                             </div>
-                            <input id="Password" type="password" class="form-control" placeholder="Password" aria-label="Password">
+                            <input id="Password" type="password" class="form-control" placeholder="Password" name="Password">
                         </div>
-                    </form>
-                </div>
 
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" >Create Account</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" >Create Account</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                     </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -5,6 +5,10 @@ const Validators = require('../util/Validators');
  * @createdAt 2021-01-31
  */
 class Registration{
+
+    constructor(){
+        
+    }
     /**
      * validate the form for registration.
      * @param {any} firstName the first field to be checked.
