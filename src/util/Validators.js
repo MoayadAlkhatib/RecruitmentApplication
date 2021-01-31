@@ -34,5 +34,15 @@ class Validators{
         return /\d/.test(name);
     }
 
-    
+    /**
+     * checks if the field is a name.
+     * @param { any } name to be checked.
+     */
+    static isAName(name){
+        return !(this.isEmpty(name) ||
+        this.containsANumber(name) ||
+        this.containsSpecialCharacters(name))
+     }
+
+
 }module.exports=Validators;

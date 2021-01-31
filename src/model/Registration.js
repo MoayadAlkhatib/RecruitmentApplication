@@ -5,13 +5,18 @@ const Validators = require('../util/Validators');
  * @createdAt 2021-01-31
  */
 class Registration{
-    /**
-     * checks if the field is a name.
-     * @param { any } name to be checked.
-     */
-    static isAName(name){
-       return !(Validators.isEmpty(name) ||
-       Validators.containsANumber(name) ||
-       Validators.containsSpecialCharacters(name))
+
+    static validateForm(firstName, lastName){
+        let err = [];
+        if(Validators.isAName(firstName)){
+        }else{
+            err.push({message: 'Please Enter a valid first name.'})
+        }
+        if(Validators.isAName(lastName)){
+        }else{
+            err.push({message: 'Please Enter a valid last name.'})
+        }
+        return err;
     }
+
 }module.exports=Registration;

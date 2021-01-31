@@ -1,10 +1,7 @@
 const Registration = require('../../src/model/Registration');
 
-// Tests for isAName function.
-test('checks if the field entered is a name.', ()=>{
-    expect(Registration.isAName('Moayad')).toBe(true);
-})
-
-test('checks if the field entered is not a name.', ()=>{
-    expect(Registration.isAName('M&M')).toBe(false);
+// Tests for validateForm function.
+test('checks if the first name and last name are valid.', ()=>{
+    expect(Registration.validateForm('Mo@yad', 'Moayad')[0].message)
+    .toBe('Please Enter a valid first name.');
 })
