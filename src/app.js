@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
 const path = require('path');
+const bodyParser = require('body-parser')
 require('dotenv').config();
 const app = express();
 
@@ -12,6 +13,8 @@ app.listen(PORT, () =>{
 app.engine('handlebars', exphbs({defaultLayout: 'default'}));
 app.set('views', path.join(__dirname, 'views/'));
 app.set('view engine', 'handlebars');
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', (req, res)=>{
     res.send('<h1>Hello world<h1>');
