@@ -33,4 +33,6 @@ class Validators{
     static containsANumber(name){
         return /\d/.test(name);
     }
+
+    
 }module.exports=Validators;
