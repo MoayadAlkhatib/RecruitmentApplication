@@ -25,4 +25,12 @@ class Validators{
         let specialCharacters = /[*()_!@#$%+\-=\[\]{};':"\\|,.^&<>\/?]/g;
         return specialCharacters.test(name);
     }
+
+    /**
+     * checks if a name contains any number.
+     * @param { any } name to be checked.
+     */
+    static containsANumber(name){
+        return /\d/.test(name);
+    }
 }module.exports=Validators;

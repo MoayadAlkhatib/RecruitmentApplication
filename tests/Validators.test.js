@@ -21,3 +21,16 @@ test('checks if a name contains a special character.', ()=>{
 test('checks if a name contains a special character.', ()=>{
     expect(Validators.containsSpecialCharacters('!!!')).toBe(true);
 })
+
+test('checks if a name contains a special character.', ()=>{
+    expect(Validators.containsSpecialCharacters('.')).toBe(true);
+})
+
+// Tests for containsANumber function.
+test('checks if a name contains a number.', ()=>{
+    expect(Validators.containsANumber('Moayad1')).toBe(true);
+})
+
+test('checks if a name contains a number.', ()=>{
+    expect(Validators.containsANumber('7')).toBe(true);
+})
