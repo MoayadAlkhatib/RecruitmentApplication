@@ -7,6 +7,7 @@
 class Validators{
     /**
      * checks if a field is not empty.
+     * @param { any } field to be ckecked.
      */
     static isEmpty(field){
         if(field == null || field == ''){
@@ -15,5 +16,13 @@ class Validators{
             return false
         }
     }
-    
+
+    /**
+     * checks if a name contains special characters.
+     * @param { any } name to be checked.
+     */
+    static containsSpecialCharacters(name){
+        let specialCharacters = /[*()_!@#$%+\-=\[\]{};':"\\|,.^&<>\/?]/g;
+        return specialCharacters.test(name);
+    }
 }module.exports=Validators;
