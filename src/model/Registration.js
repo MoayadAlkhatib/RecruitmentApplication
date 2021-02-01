@@ -16,9 +16,10 @@ class Registration{
      * @param { any } email the third field to be checked.
      * @param { any } dateOfBirth the fourth field to be checked.
      * @param { any } userName the fifth field to be checked.
+     * @param { any } Password the sixth field to be checked.
      * @returns an array of errors.
      */
-    static validateForm(firstName, lastName, email, dateOfBirth, userName){
+    static validateForm(firstName, lastName, email, dateOfBirth, userName, Password){
         let err = [];
         if(Validators.isAName(firstName) == false){
           err.push({message: 'Please Enter a valid first name.'})
@@ -34,6 +35,12 @@ class Registration{
           }
         if(Validators.isAUserName(userName) == false){
             err.push({message: 'Please Enter a valid username.'})
+          }
+        if(Password.length < 6){
+            err.push({message: 'The password must be at least 6 characters.'})
+          }
+          if(Password.length > 30){
+            err.push({message: 'The password can not be greater than 30 characters.'})
           }
         return err;
     }

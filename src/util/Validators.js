@@ -10,11 +10,7 @@ class Validators{
      * @param { any } field to be ckecked.
      */
     static isEmpty(field){
-        if(field == null || field == ''){
-            return true
-        }else{
-            return false
-        }
+        return (field == null || field == '');
     }
 
     /**
