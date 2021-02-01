@@ -6,9 +6,6 @@ const Validators = require('../util/Validators');
  */
 class Registration{
 
-    constructor(){
-
-    }
     /**
      * validate the form for registration.
      * @param {any} firstName the first field to be checked.
@@ -17,9 +14,10 @@ class Registration{
      * @param { any } dateOfBirth the fourth field to be checked.
      * @param { any } userName the fifth field to be checked.
      * @param { any } Password the sixth field to be checked.
+     * @param { any } repeatPassword the sixth field to be checked.
      * @returns an array of errors.
      */
-    static validateForm(firstName, lastName, email, dateOfBirth, userName, Password){
+    static validateForm(firstName, lastName, email, dateOfBirth, userName, Password, repeatPassword){
         let err = [];
         if(Validators.isAName(firstName) == false){
           err.push({message: 'Please Enter a valid first name.'})
@@ -41,6 +39,9 @@ class Registration{
           }
           if(Password.length > 30){
             err.push({message: 'The password can not be greater than 30 characters.'})
+          }
+          if((repeatPassword == Password)==false){
+            err.push({message: 'The passwords do not match'})
           }
         return err;
     }
