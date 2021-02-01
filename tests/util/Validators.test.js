@@ -69,3 +69,16 @@ test('checks if the field entered is not a date of birth.', ()=>{
 test('checks if the field entered does not match the format', ()=>{
     expect(Validators.isADateOfBirth('96-03-18')).toBe(false);
 })
+
+// Tests for isAUserName function.
+test('checks if the field entered is a valid username', ()=>{
+    expect(Validators.isAUserName('moayada')).toBe(true);
+})
+
+test('checks if the field entered is a valid username', ()=>{
+    expect(Validators.isAUserName('Moayada12')).toBe(true);
+})
+
+test('checks if the field entered is not a valid username', ()=>{
+    expect(Validators.isAUserName('mo@yad')).toBe(false);
+})
