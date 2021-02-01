@@ -16,10 +16,10 @@ router.get('/registration', (req, res)=>{
 })
 
 router.post('/registration', (req, res)=>{
-  let {firstName, lastName, emailAddress, dateOfBirth, userName} = req.body;
+  let {firstName, lastName, emailAddress, dateOfBirth, userName, Password} = req.body;
   //console.log(firstName + lastName, emailAddress);
   console.log(Controller.validateTheForm(firstName, lastName, emailAddress, 
-    dateOfBirth, userName));
+    dateOfBirth, userName, Password));
 })
 
 module.exports = router;
