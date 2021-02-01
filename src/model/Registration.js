@@ -15,9 +15,10 @@ class Registration{
      * @param {any} lastName  the second field to be checked.
      * @param { any } email the third field to be checked.
      * @param { any } dateOfBirth the fourth field to be checked.
+     * @param { any } userName the fifth field to be checked.
      * @returns an array of errors.
      */
-    static validateForm(firstName, lastName, email, dateOfBirth){
+    static validateForm(firstName, lastName, email, dateOfBirth, userName){
         let err = [];
         if(Validators.isAName(firstName) == false){
           err.push({message: 'Please Enter a valid first name.'})
@@ -30,6 +31,9 @@ class Registration{
           }
         if(Validators.isADateOfBirth(dateOfBirth) == false){
             err.push({message: 'The date of birth should match this format yyyymmdd'})
+          }
+        if(Validators.isAUserName(userName) == false){
+            err.push({message: 'Please Enter a valid username.'})
           }
         return err;
     }

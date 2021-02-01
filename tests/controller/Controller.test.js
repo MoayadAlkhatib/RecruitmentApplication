@@ -12,6 +12,6 @@ test('checks if the email adress is not valid.', ()=>{
 })
 
 test('checks if everything is ok', ()=>{
-    expect(Controller.validateTheForm('Moayad', 'Moayad', 'moayada@kth.se', '19960318').length)
+    expect(Controller.validateTheForm('Moayad', 'Moayad', 'moayada@kth.se', '19960318', 'moo').length)
     .toBe(0);
 })
