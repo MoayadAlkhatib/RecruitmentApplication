@@ -43,3 +43,16 @@ test('checks if the field entered is a name.', ()=>{
 test('checks if the field entered is not a name.', ()=>{
     expect(Validators.isAName('M&M')).toBe(false);
 })
+
+// Tests for isAnEmail function.
+test('checks if the field entered is an email.', ()=>{
+    expect(Validators.isAnEmail('moayada@kth.se')).toBe(true);
+})
+
+test('checks if the field entered is not an email.', ()=>{
+    expect(Validators.isAnEmail('moayada.kth.se')).toBe(false);
+})
+
+test('checks if the field entered is not not an empty email.', ()=>{
+    expect(Validators.isAnEmail('')).toBe(false);
+})

@@ -7,7 +7,7 @@ const Validators = require('../util/Validators');
 class Registration{
 
     constructor(){
-        
+
     }
     /**
      * validate the form for registration.
@@ -17,13 +17,11 @@ class Registration{
      */
     static validateForm(firstName, lastName){
         let err = [];
-        if(Validators.isAName(firstName)){
-        }else{
-            err.push({message: 'Please Enter a valid first name.'})
+        if(Validators.isAName(firstName) == false){
+          err.push({message: 'Please Enter a valid first name.'})
         }
-        if(Validators.isAName(lastName)){
-        }else{
-            err.push({message: 'Please Enter a valid last name.'})
+        if(Validators.isAName(lastName) == false){
+          err.push({message: 'Please Enter a valid last name.'})
         }
         return err;
     }

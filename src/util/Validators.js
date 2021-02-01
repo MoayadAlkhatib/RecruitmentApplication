@@ -44,5 +44,14 @@ class Validators{
         this.containsSpecialCharacters(name))
      }
 
+     /**
+      * checks if the field is an email adress.
+      * @param { any } email to be checked.
+      */
+     static isAnEmail(email){
+        let emailForm = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
+        return emailForm.test(String(email).toLowerCase());
+     }
+
 
 }module.exports=Validators;
