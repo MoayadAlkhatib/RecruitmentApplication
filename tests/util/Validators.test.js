@@ -56,3 +56,16 @@ test('checks if the field entered is not an email.', ()=>{
 test('checks if the field entered is not not an empty email.', ()=>{
     expect(Validators.isAnEmail('')).toBe(false);
 })
+
+// Tests for isADateOfBirth function.
+test('checks if the field entered is a date of birth.', ()=>{
+    expect(Validators.isADateOfBirth('19960318')).toBe(true);
+})
+
+test('checks if the field entered is not a date of birth.', ()=>{
+    expect(Validators.isADateOfBirth('javascript')).toBe(false);
+})
+
+test('checks if the field entered does not match the format', ()=>{
+    expect(Validators.isADateOfBirth('96-03-18')).toBe(false);
+})

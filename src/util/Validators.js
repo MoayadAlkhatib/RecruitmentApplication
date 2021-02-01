@@ -50,8 +50,16 @@ class Validators{
       */
      static isAnEmail(email){
         let emailForm = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/;
-        return emailForm.test(String(email).toLowerCase());
+        return emailForm.test(email);
      }
 
+     /**
+      * checks if the field is a date of birth.
+      * @param { any } dateOfBirth to be checked.
+      */
+      static isADateOfBirth(dateOfBirth){
+        let dateForm = /^([0-9]{4})([0-9]{2})([0-9]{2})$/
+        return dateForm.test(dateOfBirth);
+     } 
 
 }module.exports=Validators;
