@@ -16,9 +16,9 @@ router.get('/registration', (req, res)=>{
 })
 
 router.post('/registration', (req, res)=>{
-  let {firstName, lastName, emailAddress} = req.body;
+  let {firstName, lastName, emailAddress, dateOfBirth} = req.body;
   //console.log(firstName + lastName, emailAddress);
-  console.log(Controller.validateTheForm(firstName, lastName, emailAddress));
+  console.log(Controller.validateTheForm(firstName, lastName, emailAddress, dateOfBirth));
 })
 
 module.exports = router;
