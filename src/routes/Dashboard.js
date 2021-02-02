@@ -11,28 +11,4 @@ this.Controller = new Controller();
 });
 })
 
-router.get('/registration', (req, res)=>{
-  res.render('registration')
-})
-
-router.post('/registration', (req, res)=>{
-  let {firstName, lastName, emailAddress, dateOfBirth, userName,
-  Password, repeatPassword} = req.body;
-
-  const err = Controller.validateTheForm(firstName, lastName, emailAddress, 
-    dateOfBirth, userName, Password, repeatPassword);
-
-  //console.log(firstName + lastName, emailAddress);
-  //console.log(Controller.validateTheForm(firstName, lastName, emailAddress, 
-  //  dateOfBirth, userName, Password, repeatPassword));
-  if(err.length>0){
-        res.render('registration', {
-          err, firstName, lastName, emailAddress, dateOfBirth, userName,
-          Password, repeatPassword
-        })
-      }else{
-
-      }
-})
-
 module.exports = router;
