@@ -17,11 +17,8 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.get('/', (req, res)=>{
-    res.send('<h1>Hello world<h1>');
-})
-
 app.use(express.static(path.join(__dirname, '../public')));
 
 //All routes
-app.use('/Dashboard', require('./routes/Dashboard'));
+app.use('/', require('./routes/Dashboard'));
+app.use('/registration', require('./routes/Registration'));

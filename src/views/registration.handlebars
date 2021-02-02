@@ -1,23 +1,18 @@
-  <!-- The Modal -->
-    <div class="modal" id="CreateAccount">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Create Account</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="/Dashboard/registration" method="POST">
+                    <h4>Create Account</h4>
+                    {{#each err}}
+                    <div class="alert alert-warning">
+                        <p>{{message}}</p>
+                    </div>
+                    {{/each}}
+                    <form action="/registration" method="POST">
                         <label class="sr-only" for="firstName">firstName</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="First name" name="firstName">
+                            <input type="text" class="form-control" placeholder="First name"
+                             name="firstName" value={{firstName}}>
                         </div>
 
                         <label class="sr-only" for="lastName">lastName</label>
@@ -25,7 +20,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Last name" name="lastName">
+                            <input type="text" class="form-control" placeholder="Last name"
+                             name="lastName" value={{lastName}}>
                         </div>
 
                         <label class="sr-only" for="emailAddress">emailAddress</label>
@@ -33,7 +29,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Email address" name="emailAddress">
+                            <input type="text" class="form-control" placeholder="Email address"
+                             name="emailAddress" value={{emailAddress}}>
                         </div>
 
                         <label class="sr-only" for="dateOfBirth">dateOfBirth</label>
@@ -41,15 +38,17 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Date of birth yyyymmdd" name="dateOfBirth">
+                            <input type="text" class="form-control" placeholder="Date of birth yyyymmdd"
+                             name="dateOfBirth" value={{dateOfBirth}}>
                         </div>
                         
-                        <label class="sr-only" for="usrname">Username</label>
+                        <label class="sr-only" for="userName">userName</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Username" name="Username">
+                            <input type="text" class="form-control" placeholder="Username"
+                             name="userName" value={{userName}}>
                         </div>
 
 
@@ -58,16 +57,18 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-key"></i></span>
                             </div>
-                            <input id="Password" type="password" class="form-control" placeholder="Password" name="Password">
+                            <input type="password" class="form-control" placeholder="Password"
+                             name="Password" value={{Password}}>
                         </div>
 
-                        <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" >Create Account</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                     </div>
+                         <label class="sr-only" for="repeatPassword">repeatPassword</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="repeat Password"
+                             name="repeatPassword" value={{repeatPassword}}>
+                        </div>
+                      <button type="submit" class="btn btn-primary">Create Account</button>
+                      <a href="/" class="btn btn-danger"> Cancel </a>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>

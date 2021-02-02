@@ -10,11 +10,7 @@ class Validators{
      * @param { any } field to be ckecked.
      */
     static isEmpty(field){
-        if(field == null || field == ''){
-            return true
-        }else{
-            return false
-        }
+        return (field == null || field == '');
     }
 
     /**
@@ -58,8 +54,17 @@ class Validators{
       * @param { any } dateOfBirth to be checked.
       */
       static isADateOfBirth(dateOfBirth){
-        let dateForm = /^([0-9]{4})([0-9]{2})([0-9]{2})$/
+        let dateForm = /^([0-9]{4})([0-9]{2})([0-9]{2})$/;
         return dateForm.test(dateOfBirth);
-     } 
+     }
+     
+     /**
+      * checks if the field is a valid username.
+      * @param { any } userName to be checked.
+      */
+     static isAUserName(userName){
+        let usernameForm = /^[a-zA-Z0-9]+$/;
+        return usernameForm.test(userName);
+     }
 
 }module.exports=Validators;
