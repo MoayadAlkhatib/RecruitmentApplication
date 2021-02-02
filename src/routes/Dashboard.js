@@ -27,8 +27,11 @@ router.post('/registration', (req, res)=>{
   //  dateOfBirth, userName, Password, repeatPassword));
   if(err.length>0){
         res.render('registration', {
-          err
+          err, firstName, lastName, emailAddress, dateOfBirth, userName,
+          Password, repeatPassword
         })
+      }else{
+
       }
 })
 
