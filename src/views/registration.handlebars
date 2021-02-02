@@ -1,17 +1,11 @@
-  <!-- The Modal -->
-    <div class="modal" id="CreateAccount">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Create Account</h4>
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="/Dashboard/registration" method="POST">
+                    <h4>Create Account</h4>
+                    {{#each err}}
+                    <div class="alert alert-warning">
+                        <p>{{message}}</p>
+                    </div>
+                    {{/each}}
+                    <form action="/registration" method="POST">
                         <label class="sr-only" for="firstName">firstName</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -68,14 +62,6 @@
                             </div>
                             <input type="password" class="form-control" placeholder="repeat Password" name="repeatPassword">
                         </div>
-
-                        <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary" >Create Account</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                     </div>
+                      <button type="submit" class="btn btn-primary">Create Account</button>
+                      <button type="button" class="btn btn-danger">cancel</button>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
