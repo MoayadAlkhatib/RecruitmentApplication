@@ -27,7 +27,7 @@ router.get('/', (req, res)=>{
           
            controller.createUser(name, surname, ssn, email, password,
             role_id, username)
-            .then(()=>res.render('main'))
+            .then(()=>res.render('dashboard'))
             .catch((errors)=>{
               console.log(errors.message);
               err.push({message: errors.message});
