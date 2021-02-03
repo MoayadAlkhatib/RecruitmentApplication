@@ -14,25 +14,32 @@ class User extends Sequelize.Model{
     static defineUser(sequelize){
         User.init({
             name:{
-                type:Sequelize.STRING
+                type:Sequelize.STRING,
+                allowNull: false
             },
             surname:{
-                type:Sequelize.STRING
+                type:Sequelize.STRING,
+                allowNull: false
             },
             ssn:{
-                type:Sequelize.STRING
+                type:Sequelize.STRING,
+                allowNull: false
             },
             email:{
-                type:Sequelize.STRING
+                type:Sequelize.STRING,
+                allowNull: false
             },
             password:{
-                type:Sequelize.STRING
+                type:Sequelize.STRING,
+                allowNull: false
             },
             role_id:{
-                type:Sequelize.INTEGER
+                type:Sequelize.INTEGER,
+                allowNull: false
             },
             username:{
-                type:Sequelize.STRING
+                type:Sequelize.STRING,
+                allowNull: false
             }
         }, {
             sequelize,
