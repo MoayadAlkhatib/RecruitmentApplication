@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Controller = require('../controller/Controller');
+const bcrypt = require('bcrypt');
 
 router.get('/', (req, res)=>{
     res.render('registration')
@@ -25,7 +26,8 @@ router.get('/', (req, res)=>{
         }else{
           let controller = new Controller();
           
-           controller.createUser(name, surname, ssn, email, password,
+           controller.createUser(name, surname, ssn, email,
+            bcrypt.hashSync(password, 8),
             role_id, username)
             .then(()=>res.render('dashboard'))
             .catch((errors)=>{

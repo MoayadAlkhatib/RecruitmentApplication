@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const bcrypt = require('bcrypt');
 
  /**
      * Defines the user object using the database.
