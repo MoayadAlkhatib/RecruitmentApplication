@@ -26,6 +26,7 @@ router.get('/', (req, res)=>{
           let controller = new Controller();
            controller.createUser(name, surname, ssn, email, password,
             role_id, username);
+            res.render('main');
         }
   })
   module.exports = router;
