@@ -5,24 +5,27 @@ const Controller = require('../controller/Controller');
 router.get('/', (req, res)=>{
     res.render('registration')
   })
-  
+
   router.post('/', (req, res)=>{
-    let {firstName, lastName, emailAddress, dateOfBirth, userName,
-    Password, repeatPassword} = req.body;
+    let role_id = 2;
+    let {name, surname, email, ssn, username,
+      password, repeatPassword} = req.body;
   
-    const err = Controller.validateTheForm(firstName, lastName, emailAddress, 
-      dateOfBirth, userName, Password, repeatPassword);
+    const err = Controller.validateTheForm(name, surname, email, ssn, username,
+      password, repeatPassword);
   
     //console.log(firstName + lastName, emailAddress);
     //console.log(Controller.validateTheForm(firstName, lastName, emailAddress, 
     //  dateOfBirth, userName, Password, repeatPassword));
     if(err.length>0){
           res.render('registration', {
-            err, firstName, lastName, emailAddress, dateOfBirth, userName,
-            Password, repeatPassword
+            err, name, surname, email, ssn, username,
+            password, repeatPassword
           })
         }else{
-  
+          let controller = new Controller();
+           controller.createUser(name, surname, ssn, email, password,
+            role_id, username);
         }
   })
   module.exports = router;

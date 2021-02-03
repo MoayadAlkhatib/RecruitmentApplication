@@ -1,6 +1,5 @@
 const DAO = require('../integration/DAO');
 const Registration = require('../model/Registration');
-const User = require('../model/User');
 /**
  * All classes should call the model or the DAO using this class.
  * @author Moayad Alkhatib
@@ -40,9 +39,13 @@ class Controller{
     /**
      * creates a new user.
      */
-    async createUser(){
-        this.User=new User();
-        await this.User.createUser();
+     async createUser(name, surname, ssn, email, password,
+        role_id, username){
+         this.DAO = new DAO();
+         return await (await this.DAO.createTable()).create({
+            name, surname, ssn, email, password,
+                role_id, username
+         });
     }
 
 } module.exports = Controller;

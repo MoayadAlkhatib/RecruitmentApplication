@@ -1,5 +1,4 @@
-const sequelize = require('sequelize');
-const DAO = require('../integration/DAO');
+const Sequelize = require('sequelize');
 
  /**
      * Defines the user object using the database.
@@ -7,40 +6,39 @@ const DAO = require('../integration/DAO');
      * @createdAt 2021-02-02
      */
 
-class User{
-    /**
-     * create a connection to the database.
-     */
-    constructor(){
-        this.DAO= new DAO();
-    }
-    
+class User extends Sequelize.Model{
+   
     /**
      * create a new instance of User object.
      */
-    async createUser(){
-        await this.DAO.define('User', {
+    static defineUser(sequelize){
+        User.init({
             name:{
-                type:sequelize.STRING
+                type:Sequelize.STRING
             },
             surname:{
-                type:sequelize.STRING
+                type:Sequelize.STRING
             },
             ssn:{
-                type:sequelize.STRING
+                type:Sequelize.STRING
             },
             email:{
-                type:sequelize.STRING
+                type:Sequelize.STRING
             },
             password:{
-                type:sequelize.STRING
+                type:Sequelize.STRING
             },
             role_id:{
-                type:sequelize.INTEGER
+                type:Sequelize.INTEGER
             },
             username:{
-                type:sequelize.STRING
+                type:Sequelize.STRING
             }
-        })
+        }, {
+            sequelize,
+            modelName: 'person'
+          })
+        return User;
     }
+
 }module.exports=User;

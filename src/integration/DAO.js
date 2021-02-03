@@ -1,4 +1,5 @@
 const Sequelize  = require('sequelize');
+const User = require('../model/User');
 /**
  * This is the class responsible for connections and calls 
  * to the database.
@@ -22,6 +23,12 @@ class DAO{
      */
     async testConnectivity(){
         await this.db.authenticate()
+    }
+
+     async createTable(){
+      await this.db.authenticate();
+      await this.db.sync({force: false});
+      return User.defineUser(this.db);
     }
 
 
