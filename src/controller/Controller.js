@@ -37,7 +37,8 @@ class Controller{
     }
 
     /**
-     * creates a new user.
+     * creates a new user and push the data to the database.
+     *
      */
      async createUser(name, surname, ssn, email, password,
         role_id, username){

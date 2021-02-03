@@ -15,6 +15,7 @@ class DAO{
             process.env.DB_USER,
             process.env.DB_PASS,
             {host: process.env.DB_HOST, dialect: process.env.DB_DIALECT});
+            this.db.sync({force: false});
     }
 
     /**
@@ -26,8 +27,6 @@ class DAO{
     }
 
      async createTable(){
-      await this.db.authenticate();
-      await this.db.sync({force: false});
       return User.defineUser(this.db);
     }
 

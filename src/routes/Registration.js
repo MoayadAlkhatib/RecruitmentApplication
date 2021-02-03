@@ -24,9 +24,19 @@ router.get('/', (req, res)=>{
           })
         }else{
           let controller = new Controller();
+          
            controller.createUser(name, surname, ssn, email, password,
-            role_id, username);
-            res.render('main');
+            role_id, username)
+            .then(()=>res.render('main'))
+            .catch((errors)=>{
+              console.log(errors.message);
+              err.push({message: errors.message});
+
+                res.render('registration',{
+                  err, name, surname, email, ssn, username,
+                  password, repeatPassword
+                }); 
+            });
         }
   })
   module.exports = router;

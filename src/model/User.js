@@ -39,7 +39,11 @@ class User extends Sequelize.Model{
             },
             username:{
                 type:Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: {
+                args: true,
+                msg: 'The username is already used please try anothor one.'
+               }
             }
         }, {
             sequelize,
