@@ -22,3 +22,4 @@ app.use(express.static(path.join(__dirname, '../public')));
 //All routes
 app.use('/', require('./routes/Dashboard'));
 app.use('/registration', require('./routes/Registration'));
+app.use('/login', require('./routes/LogIn'));

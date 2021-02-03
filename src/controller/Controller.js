@@ -1,5 +1,7 @@
 const DAO = require('../integration/DAO');
 const Registration = require('../model/Registration');
+const LogIn = require('../model/LogIn');
+
 /**
  * All classes should call the model or the DAO using this class.
  * @author Moayad Alkhatib
@@ -34,6 +36,10 @@ class Controller{
          userName, Password, repeatPassword){
         return Registration.validateForm(firstName, lastName, email,
              dateOfBirth, userName, Password, repeatPassword);
+    }
+
+    static validateLogIn(userName, passWord){
+        return LogIn.validateForm(userName, passWord);
     }
 
 } module.exports = Controller;
