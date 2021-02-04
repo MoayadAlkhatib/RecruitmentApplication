@@ -26,6 +26,9 @@ class DAO{
         await this.db.authenticate()
     }
 
+    /**
+     * Defines the user table in the database.
+     */
      async createTable(){
       return User.defineUser(this.db);
     }
