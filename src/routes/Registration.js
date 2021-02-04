@@ -35,8 +35,7 @@ router.get('/', (req, res)=>{
               err.push({message: errors.message});
 
                 res.render('registration',{
-                  err, name, surname, email, ssn, username,
-                  password, repeatPassword
+                  err, name, surname, email, ssn, username
                 }); 
             });
         }
