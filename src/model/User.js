@@ -36,7 +36,8 @@ class User extends Sequelize.Model{
             },
             role_id:{
                 type:Sequelize.INTEGER,
-                allowNull: false
+                allowNull: false,
+                defaultValue: 2
             },
             username:{
                 type:Sequelize.STRING,

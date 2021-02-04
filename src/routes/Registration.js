@@ -8,7 +8,7 @@ router.get('/', (req, res)=>{
   })
 
   router.post('/', (req, res)=>{
-    let role_id = 2;
+    let role_id;
     let {name, surname, email, ssn, username,
       password, repeatPassword} = req.body;
   
@@ -28,7 +28,7 @@ router.get('/', (req, res)=>{
           
            controller.createUser(name, surname, ssn, email,
             bcrypt.hashSync(password, 8),
-            role_id, username)
+             role_id,username)
             .then(()=>res.render('dashboard'))
             .catch((errors)=>{
               console.log(errors.message);
