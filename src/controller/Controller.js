@@ -38,8 +38,17 @@ class Controller{
              dateOfBirth, userName, Password, repeatPassword);
     }
 
-    static validateLogIn(userName, passWord){
-        return LogIn.validateForm(userName, passWord);
+    /**
+     * creates a new user and push the data to the database.
+     *
+     */
+     async createUser(name, surname, ssn, email, password,
+        role_id, username){
+         this.DAO = new DAO();
+         return await (await this.DAO.createTable()).create({
+            name, surname, ssn, email, password,
+                role_id, username
+         });
     }
 
 } module.exports = Controller;

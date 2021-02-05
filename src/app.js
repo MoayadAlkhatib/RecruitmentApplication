@@ -20,6 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, '../public')));
 
 //All routes
-app.use('/', require('./routes/Dashboard'));
+app.use('/', require('./routes/Main'));
 app.use('/registration', require('./routes/Registration'));
-app.use('/login', require('./routes/LogIn'));
+app.use('/dashboard', require('./routes/Dashboard'));
