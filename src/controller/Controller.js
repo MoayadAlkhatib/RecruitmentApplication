@@ -38,6 +38,10 @@ class Controller{
              dateOfBirth, userName, Password, repeatPassword);
     }
 
+    static validateLogIn(userName, passWord){
+        return LogIn.validateForm(userName, passWord);
+    }
+
     /**
      * creates a new user and push the data to the database.
      *
