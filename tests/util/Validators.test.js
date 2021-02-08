@@ -82,3 +82,7 @@ test('checks if the field entered is a valid username', ()=>{
 test('checks if the field entered is not a valid username', ()=>{
     expect(Validators.isAUserName('mo@yad')).toBe(false);
 })
+
+test('checks if the field entered is not empty', ()=>{
+    expect(Validators.isAUserName('')).toBe(false);
+})

@@ -33,8 +33,4 @@ class DAO{
       return User.defineUser(this.db);
     }
 
-    
-
-
-
 } module.exports = DAO;

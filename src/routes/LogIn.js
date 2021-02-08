@@ -7,15 +7,15 @@ router.get('/', (req, res)=>{
   })
 
 router.post("/",(req,res)=>{
-    let{userName, passWord}= req.body;
-    const err = Controller.validateLogIn(userName,passWord);
+    let{username, password}= req.body;
+    console.log(username + password);
+    const err = Controller.validateLogIn(username,password);
     if(err.length>0){
+
         res.render('login',{
-            err,userName,passWord
+            err,username,password
         })
     }else{
-        
-        res.render("dashboard");
     }
 })
 module.exports=router;
