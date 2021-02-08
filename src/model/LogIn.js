@@ -2,7 +2,7 @@ const Validators = require('../util/Validators');
 class LogIn{
     static validateForm(userName,passWord){
         let err = [];
-        if(Validators.isAName(userName) == false){
+        if(Validators.isAUserName(userName) == false){
             err.push({message: 'Please Enter a valid username.'})
           }
           if(passWord.length < 6){

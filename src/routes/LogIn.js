@@ -13,6 +13,9 @@ router.post("/",(req,res)=>{
         res.render('login',{
             err,userName,passWord
         })
-    }else{}
+    }else{
+        
+        res.render("dashboard");
+    }
 })
 module.exports=router;
