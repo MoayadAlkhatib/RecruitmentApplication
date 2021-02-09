@@ -55,4 +55,9 @@ class Controller{
          });
     }
 
+    async signIn(userName, password){
+        this.DAO = new DAO();
+        return await this.DAO.login(userName, password);
+    }
+
 } module.exports = Controller;

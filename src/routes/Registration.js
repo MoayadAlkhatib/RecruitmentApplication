@@ -28,7 +28,7 @@ router.get('/', (req, res)=>{
           let controller = new Controller();
           
            controller.createUser(name, surname, ssn, email,
-            bcrypt.hashSync(password, 8),
+            password,
              role_id,username)
             .then(user =>{
               let token= Auth.createToken(user.id);

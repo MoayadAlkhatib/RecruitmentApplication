@@ -16,6 +16,7 @@ class DAO{
             process.env.DB_PASS,
             {host: process.env.DB_HOST, dialect: process.env.DB_DIALECT});
             this.db.sync({force: false});
+            User.defineUser(this.db);
     }
 
     /**
@@ -31,6 +32,20 @@ class DAO{
      */
      async createTable(){
       return User.defineUser(this.db);
+    }
+
+    /**
+     * login method.
+     * @param { any } username 
+     * @param { any } password
+     */
+    async login(username, password){
+        const user= await User.findAll({where:{ username: username }});
+        if(user != ''){
+            if(user[0].password == password){
+              return user[0];
+            }throw Error('incorrect password.');
+        }throw Error('incorrect email.');
     }
 
 } module.exports = DAO;
