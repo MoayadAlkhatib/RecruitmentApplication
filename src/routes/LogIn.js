@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Controller = require('../controller/Controller');
+const Auth = require('./auth/Auth');
 
 router.get('/', (req, res)=>{
     res.render('login')
@@ -18,7 +19,8 @@ router.post("/",async (req,res)=>{
         try{
         let controller = new Controller();
         let user= await controller.signIn(username, password);
-        console.log();
+        let token= Auth.createToken(user.id);
+        res.cookie('jwt', token);
         res.render('dashboard', {
             user
         })
