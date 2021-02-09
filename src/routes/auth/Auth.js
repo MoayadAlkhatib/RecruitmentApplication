@@ -14,4 +14,25 @@ class Auth{
             expiresIn: 24 * 60 * 60
         });
     }
+
+    /**
+     * This middleware fires if a route need to be authinticated.
+     */
+    static authrequire(req, res, next){
+        const token= req.cookies.jwt;
+
+        if(token){
+            jwt.verify(token, process.env.JWTSECRET, (err, newToken)=>{
+                if(err){
+                    console.log(err);
+                    res.render('login');
+                }else{
+                    console.log(newToken);
+                    next();
+                }
+            })
+        }else{
+            res.render('login');
+        }
+    }
 }module.exports=Auth;

@@ -3,6 +3,7 @@ const exphbs  = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const Auth = require('./routes/auth/Auth');
 require('dotenv').config();
 
 const app = express();
@@ -24,5 +25,5 @@ app.use(express.static(path.join(__dirname, '../public')));
 //All routes
 app.use('/', require('./routes/Main'));
 app.use('/registration', require('./routes/Registration'));
-app.use('/dashboard', require('./routes/Dashboard'));
+app.use('/dashboard', Auth.authrequire, require('./routes/Dashboard'));
 app.use('/login', require('./routes/LogIn'));

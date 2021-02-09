@@ -45,7 +45,7 @@ class DAO{
             if(user[0].password == password){
               return user[0];
             }throw Error('incorrect password.');
-        }throw Error('incorrect email.');
+        }throw Error('incorrect username.');
     }
 
 } module.exports = DAO;
