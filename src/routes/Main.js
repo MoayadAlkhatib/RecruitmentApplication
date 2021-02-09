@@ -13,7 +13,7 @@ this.Controller = new Controller();
 
 router.get('/logout', (req, res)=>{
   res.cookie('jwt', '', {maxAge: 1});
-  res.render('login');
+  res.redirect('/login');
 })
 
 module.exports = router;

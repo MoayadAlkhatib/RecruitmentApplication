@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const Controller = require('../../controller/Controller');
 /**
  * This class contains all method used for authorization.
  * @author Moayad Alkhatib
@@ -33,6 +34,32 @@ class Auth{
             })
         }else{
             res.render('login');
+        }
+    }
+
+    /**
+     * This middleware used to get user info for a spesific user.
+     */
+    static userCheck(req, res, next){
+        const token= req.cookies.jwt; 
+
+        if(token){
+            jwt.verify(token, process.env.JWTSECRET,async (err, newToken)=>{
+                if(err){
+                    console.log(err);
+                    res.locals.user=null;
+                    next();
+                }else{
+                    console.log(newToken);
+                    let controller = new Controller();
+                    let user = await controller.findUserById(newToken.id);
+                    res.locals.user= user;
+                    next();
+                }
+            })
+        }else{
+            res.locals.user= null;
+            next();
         }
     }
 }module.exports=Auth;

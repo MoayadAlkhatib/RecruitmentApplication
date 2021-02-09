@@ -48,4 +48,12 @@ class DAO{
         }throw Error('incorrect username.');
     }
 
+    /**
+     * find user by id
+     * @param { any } id
+     */
+    async findUserById(id){
+        return await User.findByPk(id);
+    }
+
 } module.exports = DAO;

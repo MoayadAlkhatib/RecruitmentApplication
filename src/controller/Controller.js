@@ -60,4 +60,8 @@ class Controller{
         return await this.DAO.login(userName, password);
     }
 
+    async findUserById(id){
+        this.DAO = new DAO();
+        return await this.DAO.findUserById(id);
+    }
 } module.exports = Controller;

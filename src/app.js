@@ -22,6 +22,8 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('*',Auth.userCheck);
+
 //All routes
 app.use('/', require('./routes/Main'));
 app.use('/registration', require('./routes/Registration'));
