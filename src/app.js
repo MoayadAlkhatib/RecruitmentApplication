@@ -1,7 +1,8 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
 const path = require('path');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +16,8 @@ app.engine('handlebars', exphbs({defaultLayout: 'default'}));
 app.set('views', path.join(__dirname, 'views/'));
 app.set('view engine', 'handlebars');
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../public')));
 
