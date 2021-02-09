@@ -21,9 +21,7 @@ router.post("/",async (req,res)=>{
         let user= await controller.signIn(username, password);
         let token= Auth.createToken(user.id);
         res.cookie('jwt', token);
-        res.render('dashboard', {
-            user
-        })
+        res.redirect('dashboard')
         }catch(error){
             console.log(error);
             err.push({message: error.message});

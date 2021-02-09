@@ -32,13 +32,13 @@
 
               {{#if user}}
 
+               <li class="nav-item">
+                    welcome {{user.dataValues.name}}
+                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link btn btn-danger text-white"
                      type="button" href="logout">log out</a>
-                </li>
-
-                <li class="nav-item">
-                    <p>welcome {{user.dataValues.name}}</p>
                 </li>
               
               {{else}}
@@ -58,7 +58,6 @@
     <div class="container">
     {{{body}}}
     </div>
- 
 </body>
 
 </html>

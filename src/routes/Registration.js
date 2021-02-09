@@ -34,7 +34,7 @@ router.get('/', (req, res)=>{
               let token= Auth.createToken(user.id);
               res.cookie('jwt', token);
              })
-            .then(()=>res.render('dashboard'))
+            .then(()=>res.redirect('dashboard'))
             .catch((errors)=>{
               console.log(errors.message);
               err.push({message: errors.message});
