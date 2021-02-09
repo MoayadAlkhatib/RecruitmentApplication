@@ -11,4 +11,8 @@ this.Controller = new Controller();
 });
 })
 
+router.get('/logout', (req, res)=>{
+  res.render('login');
+})
+
 module.exports = router;
