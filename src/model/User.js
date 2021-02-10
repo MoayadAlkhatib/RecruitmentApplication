@@ -27,7 +27,11 @@ class User extends Sequelize.Model{
             },
             email:{
                 type:Sequelize.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: {
+                args: true,
+                msg: 'The email is already used.'
+               }
             },
             password:{
                 type:Sequelize.STRING,
