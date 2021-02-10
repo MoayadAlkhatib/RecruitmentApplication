@@ -8,7 +8,7 @@ router.get('/', (req, res)=>{
     res.render('registration')
   })
 
-  router.post('/', (req, res)=>{
+  router.post('/', async(req, res)=>{
     let role_id;
     let {name, surname, email, ssn, username,
       password, repeatPassword} = req.body;
@@ -26,9 +26,9 @@ router.get('/', (req, res)=>{
           })
         }else{
           let controller = new Controller();
-          
+          let salt= await bcrypt.genSalt();
            controller.createUser(name, surname, ssn, email,
-            password,
+            await bcrypt.hash(password,salt),
              role_id,username)
             .then(user =>{
               let token= Auth.createToken(user.id);

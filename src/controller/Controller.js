@@ -55,11 +55,20 @@ class Controller{
          });
     }
 
+    /**
+     * sign in a user.
+     * @param { any } userName to login.
+     * @param { any } password to login.
+     */
     async signIn(userName, password){
         this.DAO = new DAO();
         return await this.DAO.login(userName, password);
     }
 
+    /**
+     * find a user by its id.
+     * @param { any } id of a specific user.
+     */
     async findUserById(id){
         this.DAO = new DAO();
         return await this.DAO.findUserById(id);

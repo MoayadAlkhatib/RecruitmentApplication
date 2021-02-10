@@ -26,14 +26,14 @@ class Auth{
             jwt.verify(token, process.env.JWTSECRET, (err, newToken)=>{
                 if(err){
                     console.log(err);
-                    res.render('login');
+                    res.redirect('login');
                 }else{
                     console.log(newToken);
                     next();
                 }
             })
         }else{
-            res.render('login');
+            res.redirect('login');
         }
     }
 

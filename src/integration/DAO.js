@@ -1,5 +1,6 @@
 const Sequelize  = require('sequelize');
 const User = require('../model/User');
+const bcrypt = require('bcrypt');
 /**
  * This is the class responsible for connections and calls 
  * to the database.
@@ -36,13 +37,14 @@ class DAO{
 
     /**
      * login method.
-     * @param { any } username 
-     * @param { any } password
+     * @param { any } username entered to log in.
+     * @param { any } password entered to log in.
      */
     async login(username, password){
         const user= await User.findAll({where:{ username: username }});
         if(user != ''){
-            if(user[0].password == password){
+            const auth = await bcrypt.compare(password, user[0].password);
+            if(auth){
               return user[0];
             }throw Error('incorrect password.');
         }throw Error('incorrect username.');
@@ -50,7 +52,7 @@ class DAO{
 
     /**
      * find user by id
-     * @param { any } id
+     * @param { any } id of a specific user.
      */
     async findUserById(id){
         return await User.findByPk(id);
