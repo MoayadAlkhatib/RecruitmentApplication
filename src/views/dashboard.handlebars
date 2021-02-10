@@ -1,2 +1,19 @@
+ <!-- ACCOUNT MODAL -->
+ <div id="modal-account" class="modal fade">
+     <div class="modal-dialog">
+     <div class="modal-content">
+      <div class="modal-header"><h3>Account details</h3></div>
+      <div class="modal-body" id="name">
+          name: {{ user.dataValues.name }} {{ user.dataValues.surname }} <br>
+          email: {{ user.dataValues.email }} <br>
+          username: {{ user.dataValues.username }}
+          </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      <div class="account-details"></div>
+    </div>
+    </div>
+  </div>
 <h3>Welcome {{ user.dataValues.name}}
 </h3>
