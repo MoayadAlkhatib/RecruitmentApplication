@@ -20,7 +20,7 @@ router.post("/",async (req,res)=>{
         let controller = new Controller();
         let user= await controller.signIn(username, password);
         let token= Auth.createToken(user.id);
-        res.cookie('jwt', token);
+        res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
         res.redirect('dashboard')
         }catch(error){
             console.log(error);

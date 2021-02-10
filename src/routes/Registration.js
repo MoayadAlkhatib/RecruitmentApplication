@@ -32,7 +32,7 @@ router.get('/', (req, res)=>{
              role_id,username)
             .then(user =>{
               let token= Auth.createToken(user.id);
-              res.cookie('jwt', token);
+              res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
              })
             .then(()=>res.redirect('dashboard'))
             .catch((errors)=>{
