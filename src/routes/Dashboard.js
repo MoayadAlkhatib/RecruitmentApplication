@@ -12,6 +12,12 @@ router.get('/', async(req,res)=>{
      })  
  });
 
+ router.post('/', (req, res)=>{
+     console.log(req.body.area);
+     console.log(req.body.years);
+     console.log(res.locals.user.id);
+ })
+
  /**
   * make options for years of experiance field from 1 to 50.
   */

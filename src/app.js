@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('*',Auth.userCheck);
+app.post('*',Auth.userCheck);
 
 //All routes
 app.use('/', require('./routes/Main'));
