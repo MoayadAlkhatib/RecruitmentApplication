@@ -4,6 +4,7 @@ const Handlebars = require('handlebars');
 const Controller = require('../controller/Controller');
 let controller = new Controller();
 let comps=[];
+let application=[];
 
 router.get('/', async(req,res)=>{ 
      await controller.getComp().then((competence)=>{
@@ -13,9 +14,14 @@ router.get('/', async(req,res)=>{
  });
 
  router.post('/', (req, res)=>{
-     console.log(req.body.area);
-     console.log(req.body.years);
-     console.log(res.locals.user.id);
+     application={
+         userId: res.locals.user.id,
+         area: req.body.area,
+         years: req.body.years
+     }
+
+     console.log(application);
+     res.render('dashboard', {application: application});
  })
 
  /**
