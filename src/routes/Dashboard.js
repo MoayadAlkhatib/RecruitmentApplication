@@ -5,7 +5,7 @@ const Controller = require('../controller/Controller');
 
 let controller = new Controller();
 let comps=[];
-let application=[];
+let globalApplications=[];
 
 router.get('/', async(req,res)=>{ 
      await controller.getComp().then((competence)=>{
@@ -20,13 +20,21 @@ router.get('/', async(req,res)=>{
      if(err.length>0){
          res.render('dashboard', {err: err});
      }else{
+     let application=[];
+
+     globalApplications.push({
+        userId: res.locals.user.id,
+        area: req.body.area,
+        years: req.body.years
+    });
+
      application.push({
          userId: res.locals.user.id,
          area: req.body.area,
          years: req.body.years
      });
 
-     console.log(application);
+     //console.log(globalApplications);
      res.render('dashboard', {application: application});
     }
  })
