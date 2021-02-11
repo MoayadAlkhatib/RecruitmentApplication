@@ -14,11 +14,11 @@ router.get('/', async(req,res)=>{
  });
 
  router.post('/', (req, res)=>{
-     application={
+     application.push({
          userId: res.locals.user.id,
          area: req.body.area,
          years: req.body.years
-     }
+     });
 
      console.log(application);
      res.render('dashboard', {application: application});

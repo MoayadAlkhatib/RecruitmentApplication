@@ -19,12 +19,12 @@
 
 <h3 id="welcomeMessage">Welcome {{ user.dataValues.name}} </h3>
 
-   {{#with application}}
+   {{#each application}}
     <div class="alert alert-success">
     <p>Added expertise {{area}} with {{years}} years of experience</p>
 
     </div>
-{{/with}}
+{{/each}}
 
 <form action="/dashboard" method="POST" enctype="application/json">
 
