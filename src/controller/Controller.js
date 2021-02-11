@@ -73,4 +73,12 @@ class Controller{
         this.DAO = new DAO();
         return await this.DAO.findUserById(id);
     }
+
+    /**
+     * creates a new competence.
+     */
+    async createComp(competence){
+        this.DAO = new DAO();
+        return await this.DAO.createCompetence(competence);
+    }
 } module.exports = Controller;

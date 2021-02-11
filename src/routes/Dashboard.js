@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const Handlebars = require('handlebars');
+const Controller = require('../controller/Controller');
+const Competence = require('../model/Competence');
+let controller = new Controller();
 
-router.get('/', (req,res)=>{ 
-     res.status(200).render('dashboard')
+router.get('/', async(req,res)=>{ 
+     res.status(200).render('dashboard');
+     await controller.createComp('Karuselldrift').then((competence)=>{
+        console.log(competence);
+     })  
  });
 
  /**
