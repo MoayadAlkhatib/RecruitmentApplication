@@ -68,4 +68,11 @@ class DAO{
         return await Competence.create({name: competence});
     }
 
+     /**
+     * returns all competences.
+     */
+    async getCompetences(){
+        return await Competence.findAll();
+    }
+
 } module.exports = DAO;

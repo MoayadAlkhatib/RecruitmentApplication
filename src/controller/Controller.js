@@ -81,4 +81,12 @@ class Controller{
         this.DAO = new DAO();
         return await this.DAO.createCompetence(competence);
     }
+
+    /**
+     * returns all competences.
+     */
+    async getComp(){
+        this.DAO = new DAO();
+        return await this.DAO.getCompetences();
+    }
 } module.exports = Controller;
