@@ -1,6 +1,7 @@
 const DAO = require('../integration/DAO');
 const Registration = require('../model/Registration');
 const LogIn = require('../model/LogIn');
+const CompetenceValidation = require('../model/CompetenceValidation');
 
 /**
  * All classes should call the model or the DAO using this class.
@@ -89,4 +90,15 @@ class Controller{
         this.DAO = new DAO();
         return await this.DAO.getCompetences();
     }
+
+    /**
+     * Validate the competence form.
+     * @param {any} area of expertise.
+     * @param {any} years  of experience in the area.
+     * @returns an array of errors.
+     */
+    static validateCompetence(area, years){
+        return CompetenceValidation.validateForm(area, years);
+    }
+
 } module.exports = Controller;

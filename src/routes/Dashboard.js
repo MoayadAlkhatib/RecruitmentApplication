@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Handlebars = require('handlebars');
 const Controller = require('../controller/Controller');
+
 let controller = new Controller();
 let comps=[];
 let application=[];
@@ -14,6 +15,11 @@ router.get('/', async(req,res)=>{
  });
 
  router.post('/', (req, res)=>{
+     let err = Controller.validateCompetence(req.body.area, req.body.years);
+
+     if(err.length>0){
+         res.render('dashboard', {err: err});
+     }else{
      application.push({
          userId: res.locals.user.id,
          area: req.body.area,
@@ -22,6 +28,7 @@ router.get('/', async(req,res)=>{
 
      console.log(application);
      res.render('dashboard', {application: application});
+    }
  })
 
  /**

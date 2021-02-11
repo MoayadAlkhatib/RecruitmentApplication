@@ -19,12 +19,17 @@
 
 <h3 id="welcomeMessage">Welcome {{ user.dataValues.name}} </h3>
 
+   {{#each err}}
+    <div class="alert alert-warning">
+     <p>{{message}}</p>
+    </div>
+    {{/each}}
+
    {{#each application}}
     <div class="alert alert-success">
     <p>Added expertise {{area}} with {{years}} years of experience</p>
-
     </div>
-{{/each}}
+   {{/each}}
 
 <form action="/dashboard" method="POST" enctype="application/json">
 
@@ -38,7 +43,7 @@
 
     <div class="input-group mb-3">
         <select name="years" class="form-select form-select-lg mb-3" aria-label="size 3 select example">
-            <option selected>Specify years of experience </option>
+            <option selected>Specify years of experience</option>
             {{#yearsOfExp}}
             {{/yearsOfExp}}
         </select>
