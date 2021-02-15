@@ -26,6 +26,11 @@ class CompetenceProfile extends Sequelize.Model{
                 allowNull: false
             },
         }, {
+            uniqueKeys: {
+                actions_unique: {
+                    fields: ['person_id', 'competence_id']
+                }  
+            },
             sequelize,
             modelName: 'competence_profile',
             timestamps: false

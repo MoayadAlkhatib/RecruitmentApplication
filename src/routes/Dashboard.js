@@ -7,13 +7,13 @@ let controller = new Controller();
 let comps=[];
 
 router.get('/', async(req,res)=>{ 
-     await controller.getComp().then((competence)=>{
-        comps=competence;
-        res.status(200).render('dashboard');
-     })  
+     //await controller.createComp('karuselldrift');
+     let competences= await controller.getComp();
+     comps=competences;
+     res.status(200).render('dashboard'); 
  });
 
- router.post('/', (req, res)=>{
+ router.post('/', async (req, res)=>{
      let err = controller.validateCompetence(req.body.area, req.body.years);
 
      if(err.length>0){
@@ -26,11 +26,18 @@ router.get('/', async(req,res)=>{
          area: req.body.area,
          years: req.body.years
      });
-     controller.createCompProfile(res.locals.user.id,
-       controller.getCompid(comps, req.body.area),
-       req.body.years);
+     try{
+      await controller.createCompProfile(res.locals.user.id,
+        controller.getCompid(comps, req.body.area),
+        parseInt(req.body.years));
+        res.render('dashboard', {application: application});
+     }catch(error){
+       if(error.message == 'Validation error'){
+        err.push({message: 'You have already entered this competence.'});
+       }
+       res.render('dashboard', {err: err});
+     }
 
-     res.render('dashboard', {application: application});
     }
  })
 
