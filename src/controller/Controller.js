@@ -33,13 +33,13 @@ class Controller{
      * @param { any } Password the sixth field to be checked.
      * @param { any } repeatPassword the sixth field to be checked.
      */
-    static validateTheForm(firstName, lastName, email, dateOfBirth,
+     validateTheForm(firstName, lastName, email, dateOfBirth,
          userName, Password, repeatPassword){
         return Registration.validateForm(firstName, lastName, email,
              dateOfBirth, userName, Password, repeatPassword);
     }
 
-    static validateLogIn(userName, passWord){
+    validateLogIn(userName, passWord){
         return LogIn.validateForm(userName, passWord);
     }
 
@@ -97,7 +97,7 @@ class Controller{
      * @param {any} years  of experience in the area.
      * @returns an array of errors.
      */
-    static validateCompetence(area, years){
+     validateCompetence(area, years){
         return CompetenceValidation.validateForm(area, years);
     }
 

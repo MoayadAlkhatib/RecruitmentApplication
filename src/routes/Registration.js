@@ -4,6 +4,8 @@ const Controller = require('../controller/Controller');
 const bcrypt = require('bcrypt');
 const Auth = require('./auth/Auth');
 
+let controller = new Controller();
+
 router.get('/', (req, res)=>{
     res.render('registration')
   })
@@ -13,11 +15,11 @@ router.get('/', (req, res)=>{
     let {name, surname, email, ssn, username,
       password, repeatPassword} = req.body;
   
-    const err = Controller.validateTheForm(name, surname, email, ssn, username,
+    const err = controller.validateTheForm(name, surname, email, ssn, username,
       password, repeatPassword);
   
     //console.log(firstName + lastName, emailAddress);
-    //console.log(Controller.validateTheForm(firstName, lastName, emailAddress, 
+    //console.log(controller.validateTheForm(firstName, lastName, emailAddress, 
     //  dateOfBirth, userName, Password, repeatPassword));
     if(err.length>0){
           res.render('registration', {
@@ -25,7 +27,6 @@ router.get('/', (req, res)=>{
             password, repeatPassword
           })
         }else{
-          let controller = new Controller();
           let salt= await bcrypt.genSalt();
            controller.createUser(name, surname, ssn, email,
             await bcrypt.hash(password,salt),

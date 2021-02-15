@@ -14,7 +14,7 @@ router.get('/', async(req,res)=>{
  });
 
  router.post('/', (req, res)=>{
-     let err = Controller.validateCompetence(req.body.area, req.body.years);
+     let err = controller.validateCompetence(req.body.area, req.body.years);
 
      if(err.length>0){
          res.render('dashboard', {err: err});
