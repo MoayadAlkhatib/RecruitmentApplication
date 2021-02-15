@@ -101,4 +101,25 @@ class Controller{
         return CompetenceValidation.validateForm(area, years);
     }
 
+     /**
+     * creates a new competenceProfile.
+     */
+    async createCompProfile(person_id, competence_id, years_of_experience){
+        this.DAO = new DAO();
+        return await this.DAO.createCompetenceProfile
+        (person_id, competence_id, years_of_experience);
+    }
+    /**
+     * gets the competence_id by entering the competence name.
+     * @param { any } competences An array of all competences.
+     * @param { any } competence to search for.
+     */
+    getCompid(competences, competence){
+        for(let i=0; i<competences.length; i++){
+            if(competences[i].name == competence){
+                return competences[i].id
+            }
+        }
+    }
+
 } module.exports = Controller;

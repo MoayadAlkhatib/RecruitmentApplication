@@ -26,8 +26,11 @@ router.get('/', async(req,res)=>{
          area: req.body.area,
          years: req.body.years
      });
+     controller.createCompProfile(res.locals.user.id,
+       controller.getCompid(comps, req.body.area),
+       req.body.years);
+     //console.log(comps['Karuselldrift']);
 
-     //console.log(globalApplications);
      res.render('dashboard', {application: application});
     }
  })

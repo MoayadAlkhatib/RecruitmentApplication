@@ -1,7 +1,8 @@
 const Sequelize  = require('sequelize');
 const User = require('../model/User');
+const Competence = require('../model/Competence');
+const CompetenceProfile = require('../model/CompetenceProfile');
 const bcrypt = require('bcrypt');
-const Competence = require('../model/Competence')
 /**
  * This is the class responsible for connections and calls 
  * to the database.
@@ -20,6 +21,7 @@ class DAO{
             this.db.sync({force: false});
             User.defineUser(this.db);
             Competence.defineCompetence(this.db);
+            CompetenceProfile.defineCompetenceProfile(this.db)
     }
 
     /**
@@ -73,6 +75,16 @@ class DAO{
      */
     async getCompetences(){
         return await Competence.findAll();
+    }
+
+    /**
+     * Creates a new competence_profile.
+     * @param { any } person_id to be added.
+     * @param { any } competence_id to be added.
+     * @param { any } years_of_experience to be added.
+     */
+    async createCompetenceProfile(person_id, competence_id, years_of_experience){
+        return await CompetenceProfile.create({person_id, competence_id, years_of_experience});
     }
 
 } module.exports = DAO;
