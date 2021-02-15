@@ -49,7 +49,6 @@ class Controller{
      */
      async createUser(name, surname, ssn, email, password,
         role_id, username){
-         this.DAO = new DAO();
          return await (await this.DAO.createTable()).create({
             name, surname, ssn, email, password,
                 role_id, username
@@ -62,7 +61,6 @@ class Controller{
      * @param { any } password to login.
      */
     async signIn(userName, password){
-        this.DAO = new DAO();
         return await this.DAO.login(userName, password);
     }
 
@@ -71,7 +69,6 @@ class Controller{
      * @param { any } id of a specific user.
      */
     async findUserById(id){
-        this.DAO = new DAO();
         return await this.DAO.findUserById(id);
     }
 
@@ -79,7 +76,6 @@ class Controller{
      * creates a new competence.
      */
     async createComp(competence){
-        this.DAO = new DAO();
         return await this.DAO.createCompetence(competence);
     }
 
@@ -87,7 +83,6 @@ class Controller{
      * returns all competences.
      */
     async getComp(){
-        this.DAO = new DAO();
         return await this.DAO.getCompetences();
     }
 
@@ -105,7 +100,6 @@ class Controller{
      * creates a new competenceProfile.
      */
     async createCompProfile(person_id, competence_id, years_of_experience){
-        this.DAO = new DAO();
         return await this.DAO.createCompetenceProfile
         (person_id, competence_id, years_of_experience);
     }
