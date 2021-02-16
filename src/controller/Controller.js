@@ -116,4 +116,11 @@ class Controller{
         }
     }
 
+    /**
+     * returns all applicants.
+     */
+    async getAllApplicants(){
+        return await this.DAO.getAllApplicants();
+    }
+
 } module.exports = Controller;

@@ -3,6 +3,7 @@ const User = require('../model/User');
 const Competence = require('../model/Competence');
 const CompetenceProfile = require('../model/CompetenceProfile');
 const bcrypt = require('bcrypt');
+const { where } = require('sequelize');
 /**
  * This is the class responsible for connections and calls 
  * to the database.
@@ -85,6 +86,13 @@ class DAO{
      */
     async createCompetenceProfile(person_id, competence_id, years_of_experience){
         return await CompetenceProfile.create({person_id, competence_id, years_of_experience});
+    }
+
+    /**
+     * returns all applicants.
+     */
+    async getAllApplicants(){
+        return User.findAll({where:{role_id: 2}});
     }
 
 } module.exports = DAO;
