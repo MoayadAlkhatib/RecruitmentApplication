@@ -22,7 +22,11 @@ router.post("/",async (req,res)=>{
         let user= await controller.signIn(username, password);
         let token= Auth.createToken(user.id);
         res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
-        res.redirect('dashboard')
+        if(user.role_id ==1){
+            res.redirect('admin');
+        }else{
+            res.redirect('dashboard');
+        }
         }catch(error){
             console.log(error);
             err.push({message: error.message});
