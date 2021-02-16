@@ -62,4 +62,32 @@ class Auth{
             next();
         }
     }
+
+    /**
+     * This middleware checks if the user is an admin. 
+     */
+    static adminAuthrequire(req, res, next){
+        const token= req.cookies.jwt;
+
+        if(token){
+            jwt.verify(token, process.env.JWTSECRET, async(err, newToken)=>{
+                if(err){
+                    console.log(err);
+                    res.redirect('login');
+                }else{
+                    console.log(newToken);
+                    let controller = new Controller();
+                    let user = await controller.findUserById(newToken.id);
+                    if(user.role_id==1){
+                      next();
+                    }else{
+                        res.redirect('dashboard');
+                    }
+                }
+            })
+        }else{
+            res.redirect('login');
+        }
+    }
+
 }module.exports=Auth;
