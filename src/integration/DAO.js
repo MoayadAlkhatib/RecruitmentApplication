@@ -2,7 +2,7 @@ const Sequelize  = require('sequelize');
 const User = require('../model/User');
 const Competence = require('../model/Competence');
 const CompetenceProfile = require('../model/CompetenceProfile');
-const bcrypt = require('bcrypt');
+const LogIn = require('../model/LogIn');
 const { where } = require('sequelize');
 /**
  * This is the class responsible for connections and calls 
@@ -48,7 +48,7 @@ class DAO{
     async login(username, password){
         const user= await User.findAll({where:{ username: username }});
         if(user != ''){
-            const auth = await bcrypt.compare(password, user[0].password);
+            const auth = await LogIn.comparePasswords(password, user[0].password);
             if(auth){
               return user[0];
             }throw Error('incorrect password.');

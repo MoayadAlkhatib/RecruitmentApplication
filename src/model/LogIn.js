@@ -1,4 +1,5 @@
 const Validators = require('../util/Validators');
+const bcrypt = require('bcrypt');
 class LogIn{
     static validateForm(userName,passWord){
         let err = [];
@@ -13,5 +14,14 @@ class LogIn{
           }
           return err;
     }
+
+/**
+ * checks if the two passwords matches.
+ * @param { any } userPass The password entered by user.
+ * @param { any } dbpass The correct password in the database.
+ */
+static async comparePasswords(userPass, dbpass){
+  return await bcrypt.compare(userPass, dbpass);
+}
 }
 module.exports=LogIn;
