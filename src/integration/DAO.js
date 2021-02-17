@@ -15,7 +15,13 @@ class DAO{
     constructor(){
         this.db = null;
         if(process.env.DATABASE_URL){
-            this.db = new Sequelize(config.production.use_env_variable,{dialect:'mysql'})
+            this.db = new Sequelize( process.env.DB_NAME,
+                process.env.DB_RUSER,
+                process.env.DB_RPASS,
+                {host: process.env.DB_RHOST, dialect: process.env.DB_DIALECT});
+                User.defineUser(this.db);
+                Competence.defineCompetence(this.db);
+
        }else{
             this.db = new Sequelize( process.env.DB_NAME,
             process.env.DB_USER,
