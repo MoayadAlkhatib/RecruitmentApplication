@@ -15,7 +15,7 @@ class DAO{
     constructor(){
         this.db = null;
         if(process.env.DATABASE_URL){
-            this.db = new Sequelize( process.env.DB_NAME,
+            this.db = new Sequelize( process.env.DB_RNAME,
                 process.env.DB_RUSER,
                 process.env.DB_RPASS,
                 {host: process.env.DB_RHOST, dialect: process.env.DB_DIALECT});
