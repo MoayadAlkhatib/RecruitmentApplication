@@ -1,1 +1,55 @@
-<h3>registered successfully</h3>
+<!-- ACCOUNT MODAL -->
+<div id="modal-account" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account details</h3>
+            </div>
+            <div class="modal-body">
+                name: {{ user.dataValues.name }} {{ user.dataValues.surname }} <br>
+                email: {{ user.dataValues.email }} <br>
+                username: {{ user.dataValues.username }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 id="welcomeMessage">Welcome {{ user.dataValues.name}} </h3>
+
+   {{#each err}}
+    <div class="alert alert-warning">
+     <p>{{message}}</p>
+    </div>
+    {{/each}}
+
+   {{#each application}}
+    <div class="alert alert-success">
+    <p>Added expertise {{area}} with {{years}} years of experience</p>
+    </div>
+   {{/each}}
+
+<form action="/dashboard" method="POST" enctype="application/json">
+
+    <div class="input-group mb-3">
+        <select name="area" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option selected>Choose an area of expertise</option>
+            {{#areas}}
+            {{/areas}}
+        </select>
+    </div>
+
+    <div class="input-group mb-3">
+        <select name="years" class="form-select form-select-lg mb-3" aria-label="size 3 select example">
+            <option selected>Specify years of experience</option>
+            {{#yearsOfExp}}
+            {{/yearsOfExp}}
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a href="/" class="btn btn-success">Done</a>
+</form>

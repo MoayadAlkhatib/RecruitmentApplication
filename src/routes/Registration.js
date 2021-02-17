@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const Controller = require('../controller/Controller');
 const bcrypt = require('bcrypt');
+const Auth = require('./auth/Auth');
 
 router.get('/', (req, res)=>{
     res.render('registration')
   })
 
-  router.post('/', (req, res)=>{
+  router.post('/', async(req, res)=>{
     let role_id;
     let {name, surname, email, ssn, username,
       password, repeatPassword} = req.body;
@@ -25,11 +26,15 @@ router.get('/', (req, res)=>{
           })
         }else{
           let controller = new Controller();
-          
+          let salt= await bcrypt.genSalt();
            controller.createUser(name, surname, ssn, email,
-            bcrypt.hashSync(password, 8),
+            await bcrypt.hash(password,salt),
              role_id,username)
-            .then(()=>res.render('dashboard'))
+            .then(user =>{
+              let token= Auth.createToken(user.id);
+              res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
+             })
+            .then(()=>res.redirect('dashboard'))
             .catch((errors)=>{
               console.log(errors.message);
               err.push({message: errors.message});

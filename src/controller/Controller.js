@@ -1,6 +1,7 @@
 const DAO = require('../integration/DAO');
 const Registration = require('../model/Registration');
 const LogIn = require('../model/LogIn');
+const CompetenceValidation = require('../model/CompetenceValidation');
 
 /**
  * All classes should call the model or the DAO using this class.
@@ -53,6 +54,51 @@ class Controller{
             name, surname, ssn, email, password,
                 role_id, username
          });
+    }
+
+    /**
+     * sign in a user.
+     * @param { any } userName to login.
+     * @param { any } password to login.
+     */
+    async signIn(userName, password){
+        this.DAO = new DAO();
+        return await this.DAO.login(userName, password);
+    }
+
+    /**
+     * find a user by its id.
+     * @param { any } id of a specific user.
+     */
+    async findUserById(id){
+        this.DAO = new DAO();
+        return await this.DAO.findUserById(id);
+    }
+
+    /**
+     * creates a new competence.
+     */
+    async createComp(competence){
+        this.DAO = new DAO();
+        return await this.DAO.createCompetence(competence);
+    }
+
+    /**
+     * returns all competences.
+     */
+    async getComp(){
+        this.DAO = new DAO();
+        return await this.DAO.getCompetences();
+    }
+
+    /**
+     * Validate the competence form.
+     * @param {any} area of expertise.
+     * @param {any} years  of experience in the area.
+     * @returns an array of errors.
+     */
+    static validateCompetence(area, years){
+        return CompetenceValidation.validateForm(area, years);
     }
 
 } module.exports = Controller;

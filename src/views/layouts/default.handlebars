@@ -22,33 +22,52 @@
 <body>
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <a class="navbar-brand" href="/">Recruitment App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand" href="/dashboard">Recruitment App</a>
+
+         <button class="navbar-toggler" type="button"
+          data-toggle="collapse" data-target="#navbarSupportedContent"
+           aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto topnav">
+
+              {{#if user}}
+
+                 <li class="nav-item">
+                <button type="button" class="btn btn-info dropdown-toggle"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 profile
+                </button>
+
+                 <div class="dropdown-menu dropdown-menu-right">
+
+                    <a class="dropdown-item" href="#" data-toggle="modal"
+                     data-target="#modal-account">My account</a>
+
+                    <a class="dropdown-item" href="logout">Log out</a>
+                </div>
+                </li>
+              
+              {{else}}
                 <li class="nav-item">
                     <a class="nav-link btn btn-danger text-white"
                      type="button" href="registration">Create Account</a>
                 </li>
-            </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto topnav">
+
                 <li class="nav-item">
-                    <a class="nav-link btn btn-danger text-white"
+                    <a class="nav-link btn btn-primary text-white"
                      type="button" href="login">LogIn</a>
                 </li>
+              {{/if}}
             </ul>
         </div>
-    
     </nav>
     <div class="container">
     {{{body}}}
     </div>
- 
 </body>
 
 </html>
