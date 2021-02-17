@@ -13,10 +13,14 @@ class DAO{
      * creates a new connection to the database.
      */
     constructor(){
-        this.db = new Sequelize( process.env.DB_NAME,
+        this.db = null;
+        if(process.env.DATABASE_URL){
+            this.db = new Sequelize(config.production.use_env_variable,{dialect:'mysql'})
+       }else{
+            this.db = new Sequelize( process.env.DB_NAME,
             process.env.DB_USER,
             process.env.DB_PASS,
-            {host: process.env.DB_HOST, dialect: process.env.DB_DIALECT});
+            {host: process.env.DB_HOST, dialect: process.env.DB_DIALECT});}
             this.db.sync({force: false});
             User.defineUser(this.db);
             Competence.defineCompetence(this.db);
