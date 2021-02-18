@@ -10,8 +10,10 @@ router.get('/', (req, res)=>{
 
 router.post('/', async(req, res)=>{
     console.log(req.body.from_date);
+    let response={from_date: req.body.from_date,
+    to_date: req.body.to_date};
     await controller.createAvailability(res.locals.user.id,
         req.body.from_date, req.body.to_date);
-        res.render('availability');
+        res.render('availability', {response: response});
 })
 module.exports=router;

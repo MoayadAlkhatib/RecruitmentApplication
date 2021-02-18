@@ -1,4 +1,10 @@
 <h4>Specify the availability periods.</h4>
+{{#with response}}
+<div class="alert alert-success">
+    <p>Added availability period from {{from_date}}
+         to {{to_date}}</p>
+    </div>
+{{/with}}
 
 <form action="/availability" method="POST" enctype="application/json">
 <div class="form-group row">
