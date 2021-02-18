@@ -29,5 +29,6 @@ app.post('*',Auth.userCheck);
 app.use('/', require('./routes/Main'));
 app.use('/registration', require('./routes/Registration'));
 app.use('/dashboard', Auth.authrequire, require('./routes/Dashboard'));
+app.use('/availability', Auth.authrequire, require('./routes/Availability'));
 app.use('/admin',Auth.adminAuthrequire, require('./routes/Admin'));
 app.use('/login', require('./routes/LogIn'));
