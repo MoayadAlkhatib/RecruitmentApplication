@@ -15,12 +15,16 @@ class DAO{
     constructor(){
         this.db = null;
         if(process.env.CLEARDB_DATABASE_URL){
+            try{
             this.db = new Sequelize( process.env.DB_RNAME,
                 process.env.DB_RUSER,
                 process.env.DB_RPASS,
                 {host: process.env.DB_RHOST, dialect: process.env.DB_DIALECT});
                 User.defineUser(this.db);
-                Competence.defineCompetence(this.db);
+                Competence.defineCompetence(this.db);}
+                catch(error){
+                    console.log(error);
+                }
 
        }else{
             this.db = new Sequelize( process.env.DB_NAME,
@@ -30,6 +34,7 @@ class DAO{
             this.db.sync({force: false});
             User.defineUser(this.db);
             Competence.defineCompetence(this.db);
+
     }
 
     /**
