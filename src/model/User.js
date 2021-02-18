@@ -35,7 +35,6 @@ class User extends Sequelize.Model{
             },
             password:{
                 type:Sequelize.STRING,
-                allowNull: false
             },
             role_id:{
                 type:Sequelize.INTEGER,
@@ -52,7 +51,9 @@ class User extends Sequelize.Model{
             }
         }, {
             sequelize,
-            modelName: 'person'
+            modelName: 'person',
+            timestamps: true,
+            updatedAt: false
           })
         return User;
     }
