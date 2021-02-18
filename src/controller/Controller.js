@@ -123,4 +123,12 @@ class Controller{
         return await this.DAO.getAllApplicants();
     }
 
+    /**
+     * creates a new availability.
+     */
+    async createAvailability(person_id, from_date, to_date){
+        return await this.DAO.createAvailability
+        (person_id, from_date, to_date);
+    }
+
 } module.exports = Controller;

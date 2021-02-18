@@ -2,6 +2,7 @@ const Sequelize  = require('sequelize');
 const User = require('../model/User');
 const Competence = require('../model/Competence');
 const CompetenceProfile = require('../model/CompetenceProfile');
+const Availability = require('../model/Availability');
 const LogIn = require('../model/LogIn');
 const { where } = require('sequelize');
 /**
@@ -22,7 +23,8 @@ class DAO{
             this.db.sync({force: false});
             User.defineUser(this.db);
             Competence.defineCompetence(this.db);
-            CompetenceProfile.defineCompetenceProfile(this.db)
+            CompetenceProfile.defineCompetenceProfile(this.db);
+            Availability.defineAvailability(this.db);
     }
 
     /**
@@ -93,6 +95,16 @@ class DAO{
      */
     async getAllApplicants(){
         return User.findAll({where:{role_id: 2}});
+    }
+
+    /**
+     * Creates a new availability.
+     * @param { any } person_id to be added.
+     * @param { any } from_date to be added.
+     * @param { any } to_date to be added.
+     */
+    async createAvailability(person_id, from_date, to_date){
+        return await Availability.create({person_id, from_date, to_date});
     }
 
 } module.exports = DAO;
