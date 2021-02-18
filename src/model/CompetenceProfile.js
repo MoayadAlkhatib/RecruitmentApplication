@@ -22,7 +22,7 @@ class CompetenceProfile extends Sequelize.Model{
                 allowNull: false
             },
             years_of_experience:{
-                type:Sequelize.INTEGER,
+                type:Sequelize.FLOAT,
                 allowNull: false
             },
         }, {
