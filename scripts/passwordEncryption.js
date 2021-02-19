@@ -15,15 +15,22 @@ async function main() {
     // query database
     const [rows, fields] = await connection.execute(
         'SELECT id, password FROM people where password IS NOT NULL');
+    //console.log(rows);
+    await updatePasswords(rows, connection);
 
-    for(let i=0; i<rows.length; i++){
+  }
+
+  async function updatePasswords(passwords, connection){
+    for(let i=0; i<passwords.length; i++){
         let salt= await bcrypt.genSalt();
 
-        rows[i].password = await bcrypt.hash(rows[i].password,salt);
+        passwords[i].password = await bcrypt.hash(passwords[i].password,salt);
 
-       /*  await connection.execute(
-            'UPDATE people SET password='); */
-        console.log(rows[i]);
+        //console.log(passwords[i]);
+
+        const [results, buff] = await connection.execute(
+              'UPDATE people SET password =' + JSON.stringify(passwords[i].password) +
+            ' WHERE id = ' + passwords[i].id); 
     }
   }
   main();
