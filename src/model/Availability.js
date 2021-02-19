@@ -13,6 +13,11 @@ class Availability extends Sequelize.Model{
      */
     static defineAvailability(sequelize){
         Availability.init({
+            id:{
+                autoIncrement:true,
+                primaryKey:true,
+                type: Sequelize.INTEGER
+             },
             person_id:{
                 type:Sequelize.INTEGER,
                 allowNull: false

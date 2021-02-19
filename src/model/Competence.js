@@ -13,6 +13,11 @@ class Competence extends Sequelize.Model{
      */
     static defineCompetence(sequelize){
         Competence.init({
+            id:{
+                autoIncrement:true,
+                primaryKey:true,
+                type: Sequelize.INTEGER
+             },
             name:{
                 type:Sequelize.STRING,
                 allowNull: false

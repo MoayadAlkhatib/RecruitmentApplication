@@ -13,6 +13,11 @@ class User extends Sequelize.Model{
      */
     static defineUser(sequelize){
         User.init({
+            id:{
+               autoIncrement:true,
+               primaryKey:true,
+               type: Sequelize.INTEGER
+            },
             name:{
                 type:Sequelize.STRING,
                 allowNull: false
@@ -22,12 +27,10 @@ class User extends Sequelize.Model{
                 allowNull: false
             },
             ssn:{
-                type:Sequelize.STRING,
-                allowNull: false
+                type:Sequelize.STRING
             },
             email:{
                 type:Sequelize.STRING,
-                allowNull: false,
                 unique: {
                 args: true,
                 msg: 'The email is already used.'
@@ -43,7 +46,6 @@ class User extends Sequelize.Model{
             },
             username:{
                 type:Sequelize.STRING,
-                allowNull: false,
                 unique: {
                 args: true,
                 msg: 'The username is already used please try anothor one.'

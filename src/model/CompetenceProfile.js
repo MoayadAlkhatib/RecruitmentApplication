@@ -13,6 +13,11 @@ class CompetenceProfile extends Sequelize.Model{
      */
     static defineCompetenceProfile(sequelize){
         CompetenceProfile.init({
+            id:{
+                autoIncrement:true,
+                primaryKey:true,
+                type: Sequelize.INTEGER
+             },
             person_id:{
                 type:Sequelize.INTEGER,
                 allowNull: false
