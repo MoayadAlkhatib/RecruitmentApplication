@@ -37,8 +37,8 @@ router.get('/', (req, res)=>{
              })
             .then(()=>res.redirect('dashboard'))
             .catch((errors)=>{
-              console.log(errors.message);
-              err.push({message: errors.message});
+              console.log(errors.errors[0].message);
+              err.push({message: errors.errors[0].message});
 
                 res.render('registration',{
                   err, name, surname, email, ssn, username
