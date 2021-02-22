@@ -27,23 +27,32 @@ router.get('/', (req, res)=>{
             password, repeatPassword
           })
         }else{
-          let salt= await bcrypt.genSalt();
-           controller.createUser(name, surname, ssn, email,
-            await bcrypt.hash(password,salt),
-             role_id,username)
-            .then(user =>{
-              let token= Auth.createToken(user.id);
-              res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
-             })
-            .then(()=>res.redirect('dashboard'))
-            .catch((errors)=>{
+          let t = await controller.beginATransaction();
+
+          try{
+            let salt= await bcrypt.genSalt();
+
+            let user= await controller.createUser(name, surname, ssn, email,
+              await bcrypt.hash(password,salt),
+               role_id,username, t);
+
+               let token= Auth.createToken(user.id);
+               res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
+
+               res.redirect('dashboard');
+               await t.commit();
+
+          }
+          catch(errors){
               console.log(errors.errors[0].message);
               err.push({message: errors.errors[0].message});
 
                 res.render('registration',{
                   err, name, surname, email, ssn, username
                 }); 
-            });
+
+                t.rollback();
+            }
         }
   })
   module.exports = router;

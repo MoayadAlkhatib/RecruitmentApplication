@@ -26,16 +26,24 @@ router.get('/', async(req,res)=>{
          area: req.body.area,
          years: req.body.years
      });
-     try{
+
+     let t = await controller.beginATransaction();
+     
+     try{   
+
       await controller.createCompProfile(res.locals.user.id,
         controller.getCompid(comps, req.body.area),
-        parseInt(req.body.years));
+        parseInt(req.body.years), t);
         res.render('dashboard', {application: application});
+
+        await t.commit();
+
      }catch(error){
        if(error.message == 'Validation error'){
         err.push({message: 'You have already entered this competence.'});
        }
        res.render('dashboard', {err: err});
+       await t.rollback();
      }
 
     }

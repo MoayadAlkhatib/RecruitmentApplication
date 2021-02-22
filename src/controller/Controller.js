@@ -48,11 +48,11 @@ class Controller{
      *
      */
      async createUser(name, surname, ssn, email, password,
-        role_id, username){
+        role_id, username, transaction){
          return await (await this.DAO.createTable()).create({
             name, surname, ssn, email, password,
                 role_id, username
-         });
+         }, {transaction: transaction});
     }
 
     /**
@@ -99,9 +99,9 @@ class Controller{
      /**
      * creates a new competenceProfile.
      */
-    async createCompProfile(person_id, competence_id, years_of_experience){
+    async createCompProfile(person_id, competence_id, years_of_experience, transaction){
         return await this.DAO.createCompetenceProfile
-        (person_id, competence_id, years_of_experience);
+        (person_id, competence_id, years_of_experience, transaction);
     }
     /**
      * gets the competence_id by entering the competence name.
@@ -129,6 +129,13 @@ class Controller{
     async createAvailability(person_id, from_date, to_date){
         return await this.DAO.createAvailability
         (person_id, from_date, to_date);
+    }
+
+    /**
+     * Begin a transaction.
+     */
+    async beginATransaction(){
+        return await this.DAO.beginTransaction();
     }
 
 } module.exports = Controller;

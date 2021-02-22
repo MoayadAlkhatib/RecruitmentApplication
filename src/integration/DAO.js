@@ -8,7 +8,7 @@ const { where } = require('sequelize');
 /**
  * This is the class responsible for connections and calls 
  * to the database.
- * @author Moayad Alkhaib
+ * @author Moayad Alkhatib
  * @created 2021-01-29
  */
 class DAO{
@@ -86,8 +86,10 @@ class DAO{
      * @param { any } competence_id to be added.
      * @param { any } years_of_experience to be added.
      */
-    async createCompetenceProfile(person_id, competence_id, years_of_experience){
-        return await CompetenceProfile.create({person_id, competence_id, years_of_experience});
+    async createCompetenceProfile(person_id, competence_id,
+         years_of_experience, transaction){
+        return await CompetenceProfile.create({person_id, competence_id,
+             years_of_experience}, {transaction: transaction});
     }
 
     /**
@@ -105,6 +107,13 @@ class DAO{
      */
     async createAvailability(person_id, from_date, to_date){
         return await Availability.create({person_id, from_date, to_date});
+    }
+
+    /**
+     * Begin a transaction.
+     */
+    async beginTransaction(){
+       return await this.db.transaction();
     }
 
 } module.exports = DAO;
