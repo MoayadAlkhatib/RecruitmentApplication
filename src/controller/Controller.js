@@ -48,11 +48,11 @@ class Controller{
      *
      */
      async createUser(name, surname, ssn, email, password,
-        role_id, username){
+        role_id, username, transaction){
          return await (await this.DAO.createTable()).create({
             name, surname, ssn, email, password,
                 role_id, username
-         });
+         }, {transaction: transaction});
     }
 
     /**
