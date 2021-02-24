@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A recruitment application for an amusement park.",
   "main": "index.js",
+  "engines": {
+    "node": "12.11.1"
+    },
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
