@@ -7,14 +7,14 @@ let controller = new Controller();
 let comps=[];
 
 router.get('/', async(req,res)=>{ 
-     await controller.getComp().then((competence)=>{
-        comps=competence;
-        res.status(200).render('dashboard');
-     })  
+     //await controller.createComp('karuselldrift');
+     let competences= await controller.getComp();
+     comps=competences;
+     res.status(200).render('dashboard'); 
  });
 
- router.post('/', (req, res)=>{
-     let err = Controller.validateCompetence(req.body.area, req.body.years);
+ router.post('/', async (req, res)=>{
+     let err = controller.validateCompetence(req.body.area, req.body.years);
 
      if(err.length>0){
          res.render('dashboard', {err: err});
@@ -27,8 +27,25 @@ router.get('/', async(req,res)=>{
          years: req.body.years
      });
 
-     //console.log(globalApplications);
-     res.render('dashboard', {application: application});
+     let t = await controller.beginATransaction();
+     
+     try{   
+
+      await controller.createCompProfile(res.locals.user.id,
+        controller.getCompid(comps, req.body.area),
+        parseInt(req.body.years), t);
+        res.render('dashboard', {application: application});
+
+        await t.commit();
+
+     }catch(error){
+       if(error.message == 'Validation error'){
+        err.push({message: 'You have already entered this competence.'});
+       }
+       res.render('dashboard', {err: err});
+       await t.rollback();
+     }
+
     }
  })
 

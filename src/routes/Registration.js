@@ -4,6 +4,8 @@ const Controller = require('../controller/Controller');
 const bcrypt = require('bcrypt');
 const Auth = require('./auth/Auth');
 
+let controller = new Controller();
+
 router.get('/', (req, res)=>{
     res.render('registration')
   })
@@ -13,11 +15,11 @@ router.get('/', (req, res)=>{
     let {name, surname, email, ssn, username,
       password, repeatPassword} = req.body;
   
-    const err = Controller.validateTheForm(name, surname, email, ssn, username,
+    const err = controller.validateTheForm(name, surname, email, ssn, username,
       password, repeatPassword);
   
     //console.log(firstName + lastName, emailAddress);
-    //console.log(Controller.validateTheForm(firstName, lastName, emailAddress, 
+    //console.log(controller.validateTheForm(firstName, lastName, emailAddress, 
     //  dateOfBirth, userName, Password, repeatPassword));
     if(err.length>0){
           res.render('registration', {
@@ -25,24 +27,32 @@ router.get('/', (req, res)=>{
             password, repeatPassword
           })
         }else{
-          let controller = new Controller();
-          let salt= await bcrypt.genSalt();
-           controller.createUser(name, surname, ssn, email,
-            await bcrypt.hash(password,salt),
-             role_id,username)
-            .then(user =>{
-              let token= Auth.createToken(user.id);
-              res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
-             })
-            .then(()=>res.redirect('dashboard'))
-            .catch((errors)=>{
-              console.log(errors.message);
-              err.push({message: errors.message});
+          let t = await controller.beginATransaction();
+
+          try{
+            let salt= await bcrypt.genSalt();
+
+            let user= await controller.createUser(name, surname, ssn, email,
+              await bcrypt.hash(password,salt),
+               role_id,username, t);
+
+               let token= Auth.createToken(user.id);
+               res.cookie('jwt', token, {httpOnly: true, maxAge:1000 * 24 * 60 * 60});
+
+               res.redirect('dashboard');
+               await t.commit();
+
+          }
+          catch(errors){
+              console.log(errors.errors[0].message);
+              err.push({message: errors.errors[0].message});
 
                 res.render('registration',{
                   err, name, surname, email, ssn, username
                 }); 
-            });
+
+                t.rollback();
+            }
         }
   })
   module.exports = router;

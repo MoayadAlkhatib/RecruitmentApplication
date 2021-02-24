@@ -33,13 +33,13 @@ class Controller{
      * @param { any } Password the sixth field to be checked.
      * @param { any } repeatPassword the sixth field to be checked.
      */
-    static validateTheForm(firstName, lastName, email, dateOfBirth,
+     validateTheForm(firstName, lastName, email, dateOfBirth,
          userName, Password, repeatPassword){
         return Registration.validateForm(firstName, lastName, email,
              dateOfBirth, userName, Password, repeatPassword);
     }
 
-    static validateLogIn(userName, passWord){
+    validateLogIn(userName, passWord){
         return LogIn.validateForm(userName, passWord);
     }
 
@@ -48,12 +48,11 @@ class Controller{
      *
      */
      async createUser(name, surname, ssn, email, password,
-        role_id, username){
-         this.DAO = new DAO();
+        role_id, username, transaction){
          return await (await this.DAO.createTable()).create({
             name, surname, ssn, email, password,
                 role_id, username
-         });
+         }, {transaction: transaction});
     }
 
     /**
@@ -62,7 +61,6 @@ class Controller{
      * @param { any } password to login.
      */
     async signIn(userName, password){
-        this.DAO = new DAO();
         return await this.DAO.login(userName, password);
     }
 
@@ -71,7 +69,6 @@ class Controller{
      * @param { any } id of a specific user.
      */
     async findUserById(id){
-        this.DAO = new DAO();
         return await this.DAO.findUserById(id);
     }
 
@@ -79,7 +76,6 @@ class Controller{
      * creates a new competence.
      */
     async createComp(competence){
-        this.DAO = new DAO();
         return await this.DAO.createCompetence(competence);
     }
 
@@ -87,7 +83,6 @@ class Controller{
      * returns all competences.
      */
     async getComp(){
-        this.DAO = new DAO();
         return await this.DAO.getCompetences();
     }
 
@@ -97,8 +92,50 @@ class Controller{
      * @param {any} years  of experience in the area.
      * @returns an array of errors.
      */
-    static validateCompetence(area, years){
+     validateCompetence(area, years){
         return CompetenceValidation.validateForm(area, years);
+    }
+
+     /**
+     * creates a new competenceProfile.
+     */
+    async createCompProfile(person_id, competence_id, years_of_experience, transaction){
+        return await this.DAO.createCompetenceProfile
+        (person_id, competence_id, years_of_experience, transaction);
+    }
+    /**
+     * gets the competence_id by entering the competence name.
+     * @param { any } competences An array of all competences.
+     * @param { any } competence to search for.
+     */
+    getCompid(competences, competence){
+        for(let i=0; i<competences.length; i++){
+            if(competences[i].name == competence){
+                return competences[i].id
+            }
+        }
+    }
+
+    /**
+     * returns all applicants.
+     */
+    async getAllApplicants(){
+        return await this.DAO.getAllApplicants();
+    }
+
+    /**
+     * creates a new availability.
+     */
+    async createAvailability(person_id, from_date, to_date){
+        return await this.DAO.createAvailability
+        (person_id, from_date, to_date);
+    }
+
+    /**
+     * Begin a transaction.
+     */
+    async beginATransaction(){
+        return await this.DAO.beginTransaction();
     }
 
 } module.exports = Controller;

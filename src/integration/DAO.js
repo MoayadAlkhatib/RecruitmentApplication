@@ -1,11 +1,14 @@
 const Sequelize  = require('sequelize');
 const User = require('../model/User');
-const bcrypt = require('bcrypt');
-const Competence = require('../model/Competence')
+const Competence = require('../model/Competence');
+const CompetenceProfile = require('../model/CompetenceProfile');
+const Availability = require('../model/Availability');
+const LogIn = require('../model/LogIn');
+const { where } = require('sequelize');
 /**
  * This is the class responsible for connections and calls 
  * to the database.
- * @author Moayad Alkhaib
+ * @author Moayad Alkhatib
  * @created 2021-01-29
  */
 class DAO{
@@ -34,7 +37,6 @@ class DAO{
             this.db.sync({force: false});
             User.defineUser(this.db);
             Competence.defineCompetence(this.db);
-
     }
 
     /**
@@ -60,7 +62,7 @@ class DAO{
     async login(username, password){
         const user= await User.findAll({where:{ username: username }});
         if(user != ''){
-            const auth = await bcrypt.compare(password, user[0].password);
+            const auth = await LogIn.comparePasswords(password, user[0].password);
             if(auth){
               return user[0];
             }throw Error('incorrect password.');
@@ -88,6 +90,42 @@ class DAO{
      */
     async getCompetences(){
         return await Competence.findAll();
+    }
+
+    /**
+     * Creates a new competence_profile.
+     * @param { any } person_id to be added.
+     * @param { any } competence_id to be added.
+     * @param { any } years_of_experience to be added.
+     */
+    async createCompetenceProfile(person_id, competence_id,
+         years_of_experience, transaction){
+        return await CompetenceProfile.create({person_id, competence_id,
+             years_of_experience}, {transaction: transaction});
+    }
+
+    /**
+     * returns all applicants.
+     */
+    async getAllApplicants(){
+        return User.findAll({where:{role_id: 2}});
+    }
+
+    /**
+     * Creates a new availability.
+     * @param { any } person_id to be added.
+     * @param { any } from_date to be added.
+     * @param { any } to_date to be added.
+     */
+    async createAvailability(person_id, from_date, to_date){
+        return await Availability.create({person_id, from_date, to_date});
+    }
+
+    /**
+     * Begin a transaction.
+     */
+    async beginTransaction(){
+       return await this.db.transaction();
     }
 
 } module.exports = DAO;
