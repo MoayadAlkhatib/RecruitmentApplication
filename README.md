@@ -1,7 +1,29 @@
 # Recruitment Application
 A recruitment application for an amusement park.
 
-The application uses Express.js for back-end, Mysql for the database, MVC  structure for front-end and jest for testing.
+
+# Project Explained
+The recruiting application is made for an amusement park where applicants are able to apply for a position at the said company. It also enables the recruiters to recieve the applications to then make the decision wheteher or not the applicant  will proceed on the application process.
+
+
+# Tools
+###### The application uses:
+###### Express.js for back-end.
+###### Mysql for the database.
+###### MVC structure for front-end and jest for testing. 
+###### The application is also deployed on AWS Cloud platform.
+
+# Architecture
+The group have chosen to implement Version 2, i.e chosen Client-Side Rendering with a Monolithic Architecture.  
+More information regarding our decision can be find [here](https://github.com/MoayadAlkhatib/RecruitmentApplication/wiki/Decision-Log)
+
+
+Our application currently implemets the following use cases:
+#### Use case 5.1: User can create an account.
+#### Use case 5.2: User can login.
+#### Use case 5.3: An authenticated user can apply for a job.
+
+
 
 # Get started
 ### 1. Download or Clone this repo:
@@ -40,6 +62,7 @@ npm run test
 
 
 # Folder Structure
+The following diagram will give a clear picture of what our directory looks like. And also how those diffrent layers works and communicate with each other.
 ```
 |               
 +---public
