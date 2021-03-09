@@ -103,8 +103,10 @@ To run the tests for this application, enter the following command from the root
 ```
 npm run test
 ```
+### 6. Development process:
+Use [projects](https://github.com/MoayadAlkhatib/RecruitmentApplication/projects/1) to add components or to change current status of a component.
 
-### 6. Deployment:
+### 7. Deployment:
 This application uses AWS as cloud platform. 
 This application is up and running on : https://alkhatib.ddns.net
 
