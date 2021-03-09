@@ -11,6 +11,7 @@ The recruitment  application is made for an amusement park where applicants are 
 ###### Git for version control.
 ###### npm for Project management.
 ###### nodemon for automatic restart.
+###### Handlebars as template engine.
 ###### Express.js for back-end.
 ###### Mysql for the database.
 ###### MVC structure for front-end and jest for testing. 
@@ -72,6 +73,10 @@ To run the tests for this application, enter the following command from the root
 ```
 npm run test
 ```
+
+### 6. Deployment:
+This application uses AWS as cloud platform. 
+THis application is up and running on : https://alkhatib.ddns.net
 
 
 
