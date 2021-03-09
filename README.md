@@ -39,6 +39,7 @@ Our application currently implemets the following use cases:
 #### Use case 5.1: User can create an account.
 #### Use case 5.2: User can login.
 #### Use case 5.3: An authenticated user can apply for a job.
+#### Use case 5.4: An authenticated admin can check all applicants names and emails.
 
 
 
