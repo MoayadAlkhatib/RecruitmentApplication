@@ -13,6 +13,19 @@ The recruitment  application is made for an amusement park where applicants are 
 ###### MVC structure for front-end and jest for testing. 
 ###### The application is also deployed on AWS Cloud platform.
 
+# Frameworks
+###### bcrypt
+###### body-parser
+###### cookie-parser
+###### dotenv 
+###### express
+###### jsonwebtoken
+###### mysql2
+###### sequelize
+###### jest
+###### nodemon
+
+
 # Architecture
 The group have chosen to implement Version 2, i.e chosen Client-Side Rendering with a Monolithic Architecture.  
 More information regarding our decision can be find [here](https://github.com/MoayadAlkhatib/RecruitmentApplication/wiki/Decision-Log)
