@@ -3,7 +3,7 @@ A recruitment application for an amusement park.
 
 
 # Project Explained
-The recruitment  application is made for an amusement park where applicants are able to apply for a position at the said company. It also enables the recruiters to recieve the applications to then make the decision wheteher or not the applicant  will proceed on the application process.
+The recruitment application is made for an amusement park where applicants can apply for a job position within the company. It also enables the recruiters to receive the applications to then make the decision whether an applicant will proceed on the application process.
 
 
 # Tools
