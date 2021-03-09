@@ -61,9 +61,39 @@ npm install     # To install all dependencies
 ```
 
 ### 4. Run the application:
+#### 4.1 Follow these stepes:
+ 1. Copy everythin from .env.example
+ 2. Create a new .env file.
+ 3. Paste inside the new .env file.
+ 4. Add your own configration for the database and the JWT_SECRET
+
+#### 4.2 Crete the old database:
+Run the script oldDataBase.sql to create the Mysql database with the old data.
+
+#### 4.3 Migrations
+This applications uses [sequelize-cli](https://www.npmjs.com/package/sequelize-cli) to migrate the data from the old data base to the new one.
+Follow these steps:
+1. Run the following command to install [sequelize-cli](https://www.npmjs.com/package/sequelize-cli) globally on your machine. 
+
 ```
-npm start  
+npm i -g sequelize-cli
+``` 
+2. Run the migrations inside migrations folder by running this command:
+
+```
+sequelize db:migrate
+```
+3. Run the script passwordEncryption.js to encrypt the old passwords by running:
+
+```
+npm run migratePass
+```
+4. Run this command to run the application on port 8080
+
+```
+npm run start  
 open http://localhost:8080 to view it in any browser of your choice.
+npm run dev //That will run the application using nodemon.
 ``` 
 
 ### 5. Tests:
@@ -76,7 +106,7 @@ npm run test
 
 ### 6. Deployment:
 This application uses AWS as cloud platform. 
-THis application is up and running on : https://alkhatib.ddns.net
+This application is up and running on : https://alkhatib.ddns.net
 
 
 
