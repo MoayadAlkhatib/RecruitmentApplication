@@ -45,7 +45,8 @@ router.get('/', (req, res)=>{
           }
           catch(errors){
               console.log(errors.errors[0].message);
-              err.push({message: errors.errors[0].message});
+              err.push({message: '"' + errors.errors[0].value + '"'+
+                 ' is already used. Please try another one.'});
 
                 res.render('registration',{
                   err, name, surname, email, ssn, username
