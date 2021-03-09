@@ -8,6 +8,9 @@ The recruitment  application is made for an amusement park where applicants are 
 
 # Tools
 ###### The application uses:
+###### Git for version control.
+###### npm for Project management.
+###### nodemon for automatic restart.
 ###### Express.js for back-end.
 ###### Mysql for the database.
 ###### MVC structure for front-end and jest for testing. 
