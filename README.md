@@ -118,4 +118,86 @@ This application is up and running on : https://alkhatib.ddns.net
 # Folder Structure
 The following diagram will give a clear picture of what our directory looks like. And also how those diffrent layers works and communicate with each other.
 ```
+|   
++---config
+|       config.js
+|       
++---migrations
+|       20210218120104-changeTablesNames.js
+|       20210218123231-renameIdColumns.js
+|       20210218130014-createdAtcolumn.js
+|       20210219015739-autoincrementId.js
+|       20210219025034-unique.js
+|       20210219040436-compprofValidation.js
+|       
++---models
+|       index.js
+|       
++---public
+|   \---css
+|           background.jpg
+|           style.css
+|           
++---scripts
+|       oldDataBase.sql
+|       passwordEncryption.js
+|       
++---src
+|   |   app.js
+|   |   
+|   +---controller
+|   |       Controller.js
+|   |       
+|   +---integration
+|   |       DAO.js
+|   |       
+|   +---model
+|   |       Availability.js
+|   |       Competence.js
+|   |       CompetenceProfile.js
+|   |       CompetenceValidation.js
+|   |       LogIn.js
+|   |       Registration.js
+|   |       User.js
+|   |       
+|   +---routes
+|   |   |   Admin.js
+|   |   |   Availability.js
+|   |   |   Dashboard.js
+|   |   |   LogIn.js
+|   |   |   Main.js
+|   |   |   Registration.js
+|   |   |   
+|   |   \---auth
+|   |           Auth.js
+|   |           
+|   +---util
+|   |       Validators.js
+|   |       
+|   \---views
+|       |   admin.handlebars
+|       |   availability.handlebars
+|       |   dashboard.handlebars
+|       |   login.handlebars
+|       |   main.handlebars
+|       |   registration.handlebars
+|       |   
+|       \---layouts
+|               default.handlebars
+|               
++---tests
+|   +---model
+|   |       Registration.test.js
+|   |       
+|   \---util
+|           Validators.test.js
+|           
+\---wiki_images
+        pic1.png
+        pic2.png
+        pic3.png
+        pic4.png
+        README.md
+        
+
 
